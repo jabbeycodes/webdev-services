@@ -1,1 +1,17 @@
-.next\ndist\nnode_modules
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+dist/
+
+# Vercel
+.vercel
+
+# Misc
+*.log
+.env.local
+.env*.local
+.DS_Store
+out/
+build/

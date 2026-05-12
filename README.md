@@ -1,12 +1,19 @@
-# Web Development Services — Josh Abbey
+# ShowMe Sites — Websites That Convert
 
-Landing page for my website building services. Built with Next.js 15 + Tailwind CSS, deployed to Vercel.
+Landing page for ShowMe Sites (`sites.shwme.app`). Built with Next.js 15 + Tailwind CSS, deployed to Vercel.
 
 ## Tech Stack
 - Next.js 15 (App Router, static export)
 - TypeScript
 - Tailwind CSS
 - Vercel
+
+## Brand Colors
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Primary amber | `#FFB800` | CTAs, highlights, badges |
+| Background dark | `#121212` | Page background |
+| Secondary teal | `#00CED1` | Accents, links |
 
 ## Pricing Tiers
 | Tier | Price | Deliverable | Timeline |
@@ -25,4 +32,4 @@ npm run build
 
 ## Contact
 - Email: info@shwme.app
-- X: @joshaabbey
+- X: @shwmeapp

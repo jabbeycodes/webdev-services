@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Josh Abbey — Web Development Services",
+  title: "ShowMe Sites — Websites That Convert",
   description:
-    "Fast, modern websites and full-stack SaaS MVPs built with Next.js, Supabase, and Vercel. Ship in days, not months.",
+    "Premium landing pages, marketing sites, and SaaS MVPs built with Next.js, Supabase, and Vercel. Designed to convert. Built to scale.",
 };
 
 export default function RootLayout({
