@@ -596,113 +596,148 @@ export default function HomePage() {
             PRICING
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Transparent, project-based.
+            No surprises. No hidden fees.
           </h2>
+          <p className="text-neutral-400 mt-4 max-w-2xl mx-auto">
+            Fixed-price packages. You know exactly what you&apos;re paying for before we start.
+          </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
               name: "Starter",
-              tagline: "Launch fast, look professional",
-              price: "$600 — $900",
-              timeline: "3–5 days",
-              features: [
-                "1-page landing site (Next.js)",
-                "Mobile-first responsive design",
-                "Vercel deployment + custom domain",
-                "Contact form + basic SEO",
-                "1 round of revisions",
+              forWho: "Founders who need to launch fast",
+              price: "$900",
+              priceNote: "One-time, fixed price",
+              timeline: "Ships in 5 days",
+              bestFor: ["New product launch", "Event or campaign page", "Personal brand site"],
+              deliverables: [
+                "1 custom landing page (up to 8 sections)",
+                "Mobile + desktop responsive",
+                "Contact form + lead capture",
+                "Domain + hosting setup",
+                "Google Analytics installed",
+                "2 revision rounds",
               ],
+              notIncluded: ["Blog", "CMS", "User accounts", "Payments"],
+              cta: "Book Starter",
               popular: false,
             },
             {
               name: "Growth",
-              tagline: "Marketing engine that scales",
-              price: "$1,500 — $2,500",
-              timeline: "1–2 weeks",
-              features: [
-                "Multi-page marketing site (5–8 pages)",
-                "Automated blog pipeline",
-                "Analytics + conversion tracking",
-                "Supabase CMS for dynamic content",
+              forWho: "Businesses ready to scale leads",
+              price: "$2,500",
+              priceNote: "One-time, fixed price",
+              timeline: "Ships in 2 weeks",
+              bestFor: ["SaaS marketing site", "Agency portfolio", "Course / coaching business"],
+              deliverables: [
+                "Up to 6 custom pages",
+                "Blog with CMS (you publish yourself)",
+                "SEO optimization + sitemap",
                 "Email capture + newsletter setup",
-                "3 rounds of revisions",
+                "Social sharing (OpenGraph)",
+                "Speed optimization (90+ Lighthouse)",
+                "3 revision rounds",
               ],
+              notIncluded: ["User auth", "Dashboard", "Payments"],
+              cta: "Book Growth",
               popular: true,
             },
             {
               name: "Pro",
-              tagline: "Full-stack SaaS MVP",
-              price: "$3,000 — $5,000",
-              timeline: "2–4 weeks",
-              features: [
-                "Full-stack app (Next.js + Supabase)",
-                "Auth + user dashboards",
-                "Payments integration",
-                "Admin panel + analytics",
-                "API endpoints + edge functions",
-                "5 rounds of revisions",
+              forWho: "Teams building real products",
+              price: "$4,500",
+              priceNote: "One-time, fixed price",
+              timeline: "Ships in 4 weeks",
+              bestFor: ["SaaS MVP", "Marketplace", "Internal tool", "Membership platform"],
+              deliverables: [
+                "Full-stack web app (Next.js + Supabase)",
+                "User authentication (email/social)",
+                "Admin dashboard + analytics",
+                "Stripe / PayPal payments",
+                "Database + API setup",
+                "Production hosting on Vercel",
+                "5 revision rounds",
               ],
+              notIncluded: ["Mobile app", "AI features", "Custom integrations"],
+              cta: "Book Pro",
               popular: false,
             },
             {
               name: "Retainer",
-              tagline: "Keep it running, keep it growing",
-              price: "$300 — $500 / mo",
+              forWho: "Clients who want ongoing support",
+              price: "$500",
+              priceNote: "/month, cancel anytime",
               timeline: "Ongoing",
-              features: [
+              bestFor: ["Post-launch growth", "Content updates", "Feature additions"],
+              deliverables: [
                 "Unlimited content updates",
                 "Performance monitoring",
-                "Monthly SEO report",
-                "Feature additions (small)",
-                "Priority support (24h)",
-                "Security patches",
+                "Monthly analytics report",
+                "Small features (2–4 hrs/mo)",
+                "Security patches + backups",
+                "Priority support (24h response)",
+                "Quarterly strategy review",
               ],
+              notIncluded: ["Major redesigns", "New apps"],
+              cta: "Start Retainer",
               popular: false,
             },
           ].map((tier, i) => (
             <div
               key={i}
               className={`glass-card rounded-2xl p-6 flex flex-col reveal ${
-                tier.popular ? "glow-border" : ""
+                tier.popular ? "glow-border relative" : ""
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {tier.popular && (
-                <span className="text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-amber-500 text-black text-xs font-bold uppercase tracking-wider rounded-full">
                   Most Popular
                 </span>
               )}
-              <h3 className="text-xl font-bold">{tier.name}</h3>
-              <p className="text-sm text-neutral-400 mt-1 mb-4">
-                {tier.tagline}
-              </p>
-              <p className="text-2xl font-bold text-white mb-1">{tier.price}</p>
-              <p className="text-xs text-neutral-500 mb-6">{tier.timeline}</p>
-              <ul className="space-y-3 mb-8 flex-1">
-                {tier.features.map((f, j) => (
-                  <li
-                    key={j}
-                    className="text-sm text-neutral-300 flex items-start gap-2"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      className="mt-0.5 text-amber-500 shrink-0"
-                      fill="none"
-                    >
-                      <path
-                        d="M3 8.5l3 3 7-7"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-xs text-neutral-500 uppercase tracking-wider font-semibold mb-2">{tier.name}</p>
+              <p className="text-sm text-neutral-400 mb-4">{tier.forWho}</p>
+              <div className="mb-1">
+                <span className="text-3xl font-bold text-white">{tier.price}</span>
+              </div>
+              <p className="text-xs text-neutral-500 mb-6">{tier.priceNote}</p>
+              <div className="flex items-center gap-2 mb-6 text-sm">
+                <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                <span className="text-neutral-300">{tier.timeline}</span>
+              </div>
+              <div className="mb-4">
+                <p className="text-xs font-semibold text-amber-500 uppercase tracking-wider mb-2">Best for</p>
+                <ul className="space-y-1">{tier.bestFor.map((bf, j) => <li key={j} className="text-sm text-neutral-400">• {bf}</li>)}</ul>
+              </div>
+              <div className="mb-4 flex-1">
+                <p className="text-xs font-semibold text-white uppercase tracking-wider mb-2">What you get</p>
+                <ul className="space-y-2">
+                  {tier.deliverables.map((d, j) => (
+                    <li key={j} className="text-sm text-neutral-300 flex items-start gap-2">
+                      <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 text-amber-500 shrink-0" fill="none">
+                        <path d="M3 8.5l3 3 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {tier.notIncluded.length > 0 && (
+                <div className="mb-6">
+                  <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Not included</p>
+                  <ul className="space-y-1">
+                    {tier.notIncluded.map((ni, j) => (
+                      <li key={j} className="text-sm text-neutral-500 flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 text-neutral-600 shrink-0" fill="none">
+                          <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                        {ni}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <Link
                 href="#contact"
                 className={`block text-center py-3 rounded-full font-semibold text-sm transition-colors ${
@@ -711,12 +746,29 @@ export default function HomePage() {
                     : "border border-white/20 text-white hover:bg-white/5"
                 }`}
               >
-                Book {tier.name}
+                {tier.cta}
               </Link>
             </div>
           ))}
         </div>
-      </section>
+
+        {/* Trust signals */}
+        <div className="mt-16 glass-card rounded-2xl p-8 reveal">
+          <div className="grid sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <p className="text-2xl font-bold text-amber-500">100%</p>
+              <p className="text-sm text-neutral-400">Fixed price guarantee — no scope creep charges</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-amber-500">50% upfront</p>
+              <p className="text-sm text-neutral-400">50% on delivery. You see results before paying in full.</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-amber-500">24h refund</p>
+              <p className="text-sm text-neutral-400">Not happy within 24h? Full refund, no questions.</p>
+            </div>
+          </div>
+        </div>
 
       {/* ── CTA ── */}
       <section
