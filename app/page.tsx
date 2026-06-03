@@ -6,6 +6,8 @@ import { useEffect } from "react";
 
 export default function HomePage() {
   useEffect(() => {
+    const revealElements = document.querySelectorAll(".reveal");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -17,7 +19,17 @@ export default function HomePage() {
       },
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    revealElements.forEach((el) => {
+      // Already on screen at load — show immediately so the page never looks blank
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add("visible");
+      } else {
+        observer.observe(el);
+      }
+    });
+
     return () => observer.disconnect();
   }, []);
 
@@ -141,10 +153,10 @@ export default function HomePage() {
         <div className="mt-16 lg:mt-20 animate-slide-up" style={{ animationDelay: "0.5s" }}>
           <div className="glass-card rounded-2xl overflow-hidden p-2">
             <Image
-              src="/images/mockup-laptop.jpg"
-              alt="showme.sites portfolio showcase"
-              width={1200}
-              height={675}
+              src="/images/hero-premium.jpg"
+              alt="High-converting dark, amber-accented landing page built by showme.sites"
+              width={1402}
+              height={1122}
               className="rounded-xl w-full h-auto"
               priority
             />
@@ -391,51 +403,54 @@ export default function HomePage() {
               title: "ShowMe",
               tag: "Community Platform",
               desc: "A full-stack community operating system with feeds, events, gamification, and payments. Built with Flutter, Next.js, and Supabase.",
-              img: "/images/mobile-apps.jpg",
-              link: "https://shwme.app",
+              img: "/images/showme-platform.jpg",
+            },
+            {
+              title: "ShowMe App",
+              tag: "Mobile App",
+              desc: "Cross-platform iOS and Android app for discovering compounds, joining communities, and learning from coaches — built with Flutter and Supabase.",
+              img: "/images/showme-mobile-app.jpg",
             },
             {
               title: "JER Website",
-              tag: "Marketing Site",
-              desc: "A fast, SEO-optimized Next.js marketing site with automated blog pipeline, dark mode, and conversion tracking.",
-              img: "/images/dashboard-dark.jpg",
-              link: "https://jer-website.vercel.app",
+              tag: "Hotel & Hospitality",
+              desc: "Marketing site for Jirapa Executive Residence — private corporate stays in Upper West Ghana, with availability requests, gallery, and mobile-first booking flow.",
+              img: "/images/jer-website.jpg",
             },
             {
               title: "SiteForge",
               tag: "SaaS MVP",
               desc: "Auto-generated business websites for local Columbia, MO shops. Stripe subscriptions, Google Places API, static generation.",
-              img: "/images/server-futuristic.jpg",
-              link: "https://showmesites.vercel.app",
+              img: "/images/saas-dashboard.jpg",
             },
             {
               title: "ShowMe Blog",
               tag: "Content Engine",
               desc: "Automated SEO content pipeline generating 3 posts daily with Supabase scheduling, Resend email, and social publishing.",
-              img: "/images/abstract-waves.jpg",
-              link: "https://shwme.app/blog",
+              img: "/images/site-redesign.jpg",
+            },
+            {
+              title: "PulsePoint Clinic",
+              tag: "Healthcare Site",
+              desc: "A responsive medical clinic website with appointment booking, patient portal, and mobile-first design for cardiovascular care.",
+              img: "/images/pulsepoint-clinic.jpg",
             },
             {
               title: "showme.sites",
               tag: "This Website",
-              desc: "The very site you're on. Next.js 15, Tailwind v4, glassmorphism, scroll reveals, and dark-mode-first design.",
-              img: "/images/hero-abstract.jpg",
-              link: "#",
+              desc: "The very site you're on. Next.js 16, Tailwind v4, glassmorphism, scroll reveals, and dark-mode-first design.",
+              img: "/images/hero-premium.jpg",
             },
             {
               title: "Your Project",
               tag: "Next",
               desc: "Have an idea? We turn concepts into live products. Book a call and let's scope it out.",
-              img: "/images/mockup-laptop.jpg",
-              link: "#contact",
+              img: "/images/premium-site.jpg",
               cta: true,
             },
           ].map((project, i) => (
-            <a
+            <div
               key={i}
-              href={project.link}
-              target={project.link.startsWith("http") ? "_blank" : undefined}
-              rel={project.link.startsWith("http") ? "noopener noreferrer" : undefined}
               className="glass-card rounded-2xl overflow-hidden group reveal"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
@@ -474,7 +489,7 @@ export default function HomePage() {
                   </span>
                 )}
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
@@ -578,8 +593,8 @@ export default function HomePage() {
             </div>
             <div className="relative min-h-[300px] md:min-h-full">
               <Image
-                src="/images/hero-abstract.jpg"
-                alt="Josh Abbey, founder of showme.sites"
+                src="/images/showme-mobile.jpg"
+                alt="ShowMe community mobile app — built by the showme.sites founder"
                 fill
                 className="object-cover"
               />
@@ -602,14 +617,14 @@ export default function HomePage() {
             Fixed-price packages. You know exactly what you&apos;re paying for before we start.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             {
               name: "Starter",
               forWho: "Founders who need to launch fast",
-              price: "$900",
-              priceNote: "One-time, fixed price",
-              timeline: "Ships in 5 days",
+              price: "$600–$950",
+              priceNote: "One-time project fee",
+              timeline: "Ships in 7 days",
               bestFor: ["New product launch", "Event or campaign page", "Personal brand site"],
               deliverables: [
                 "1 custom landing page (up to 8 sections)",
@@ -626,9 +641,9 @@ export default function HomePage() {
             {
               name: "Growth",
               forWho: "Businesses ready to scale leads",
-              price: "$2,500",
-              priceNote: "One-time, fixed price",
-              timeline: "Ships in 2 weeks",
+              price: "$1,200–$2,500",
+              priceNote: "One-time project fee",
+              timeline: "Ships in 3–4 weeks",
               bestFor: ["SaaS marketing site", "Agency portfolio", "Course / coaching business"],
               deliverables: [
                 "Up to 6 custom pages",
@@ -637,7 +652,7 @@ export default function HomePage() {
                 "Email capture + newsletter setup",
                 "Social sharing (OpenGraph)",
                 "Speed optimization (90+ Lighthouse)",
-                "3 revision rounds",
+                "Unlimited revisions",
               ],
               notIncluded: ["User auth", "Dashboard", "Payments"],
               cta: "Book Growth",
@@ -646,9 +661,9 @@ export default function HomePage() {
             {
               name: "Pro",
               forWho: "Teams building real products",
-              price: "$4,500",
-              priceNote: "One-time, fixed price",
-              timeline: "Ships in 4 weeks",
+              price: "$3,000–$6,000",
+              priceNote: "One-time project fee",
+              timeline: "Ships in 4–6 weeks",
               bestFor: ["SaaS MVP", "Marketplace", "Internal tool", "Membership platform"],
               deliverables: [
                 "Full-stack web app (Next.js + Supabase)",
@@ -657,16 +672,37 @@ export default function HomePage() {
                 "Stripe / PayPal payments",
                 "Database + API setup",
                 "Production hosting on Vercel",
-                "5 revision rounds",
+                "Unlimited revisions",
               ],
-              notIncluded: ["Mobile app", "AI features", "Custom integrations"],
+              notIncluded: ["Mobile app (see Mobile App)", "AI features", "Custom integrations"],
               cta: "Book Pro",
+              popular: false,
+            },
+            {
+              name: "Mobile App",
+              forWho: "Founders launching on iOS & Android",
+              price: "$2,500–$8,000",
+              priceNote: "Scoped to your app's complexity",
+              timeline: "Ships in 6–10 weeks",
+              bestFor: ["Startup MVP", "Marketplace / social app", "Booking or on-demand app"],
+              deliverables: [
+                "Cross-platform iOS + Android (Flutter)",
+                "Custom UI/UX design",
+                "Auth + user profiles",
+                "Supabase backend + realtime",
+                "Push notifications",
+                "Payments (Stripe / Paystack)",
+                "App Store + Play Store submission",
+                "Unlimited revisions",
+              ],
+              notIncluded: ["Ongoing maintenance (see Retainer)", "Hardware / IoT integrations"],
+              cta: "Scope my app",
               popular: false,
             },
             {
               name: "Retainer",
               forWho: "Clients who want ongoing support",
-              price: "$500",
+              price: "$400",
               priceNote: "/month, cancel anytime",
               timeline: "Ongoing",
               bestFor: ["Post-launch growth", "Content updates", "Feature additions"],
@@ -754,7 +790,7 @@ export default function HomePage() {
 
         {/* Trust signals */}
         <div className="mt-16 glass-card rounded-2xl p-8 reveal">
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
+          <div className="grid sm:grid-cols-2 gap-6 text-center">
             <div>
               <p className="text-2xl font-bold text-amber-500">100%</p>
               <p className="text-sm text-neutral-400">Fixed price guarantee — no scope creep charges</p>
@@ -762,10 +798,6 @@ export default function HomePage() {
             <div>
               <p className="text-2xl font-bold text-amber-500">50% upfront</p>
               <p className="text-sm text-neutral-400">50% on delivery. You see results before paying in full.</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-amber-500">24h refund</p>
-              <p className="text-sm text-neutral-400">Not happy within 24h? Full refund, no questions.</p>
             </div>
           </div>
         </div>
