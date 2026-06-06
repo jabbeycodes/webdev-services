@@ -65,8 +65,8 @@ export default function HomePage() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/[0.06]">
-        <Link href="/" className="text-xl font-bold tracking-tight text-white">
-          showme<span className="text-amber-500">.sites</span>
+        <Link href="/" className="text-lg sm:text-xl font-bold tracking-tight text-white">
+          ShowMe<span className="text-amber-500"> Web & App</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <a href="#work" className="text-sm text-neutral-400 hover:text-white transition-colors">Work</a>
@@ -154,7 +154,7 @@ export default function HomePage() {
           <div className="glass-card rounded-2xl overflow-hidden p-2">
             <Image
               src="/images/hero-premium.jpg"
-              alt="High-converting dark, amber-accented landing page built by showme.sites"
+              alt="High-converting dark, amber-accented landing page built by ShowMe Web & App"
               width={1402}
               height={1122}
               className="rounded-xl w-full h-auto"
@@ -436,7 +436,7 @@ export default function HomePage() {
               img: "/images/pulsepoint-clinic.jpg",
             },
             {
-              title: "showme.sites",
+              title: "ShowMe Web & App",
               tag: "This Website",
               desc: "The very site you're on. Next.js 16, Tailwind v4, glassmorphism, scroll reveals, and dark-mode-first design.",
               img: "/images/hero-premium.jpg",
@@ -568,7 +568,7 @@ export default function HomePage() {
                   across two continents.
                 </p>
                 <p>
-                  I started showme.sites because I kept meeting founders with
+                  I started ShowMe Web & App because I kept meeting founders with
                   great ideas who were stuck waiting months for a simple website.
                   I build what I know: fast, clean, conversion-focused web
                   experiences using the same stack that powers my own product.
@@ -586,7 +586,7 @@ export default function HomePage() {
                 <div>
                   <div className="font-bold text-white">Josh Abbey</div>
                   <div className="text-sm text-neutral-400">
-                    Founder, ShowMe & showme.sites
+                    Founder, ShowMe & ShowMe Web & App
                   </div>
                 </div>
               </div>
@@ -594,7 +594,7 @@ export default function HomePage() {
             <div className="relative min-h-[300px] md:min-h-full">
               <Image
                 src="/images/showme-mobile.jpg"
-                alt="ShowMe community mobile app — built by the showme.sites founder"
+                alt="ShowMe community mobile app — built by the ShowMe Web & App founder"
                 fill
                 className="object-cover"
               />
@@ -853,7 +853,7 @@ export default function HomePage() {
       <footer className="relative z-10 border-t border-white/[0.06] px-6 py-12">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <Link href="/" className="text-lg font-bold tracking-tight text-white">
-            showme<span className="text-amber-500">.sites</span>
+            ShowMe<span className="text-amber-500"> Web & App</span>
           </Link>
           <div className="flex items-center gap-8 text-sm text-neutral-400">
             <a href="#work" className="hover:text-white transition-colors">
@@ -876,7 +876,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="text-xs text-neutral-500">
-            © 2026 showme.sites. All rights reserved.
+            © 2026 ShowMe Web & App. All rights reserved.
           </p>
         </div>
       </footer>
