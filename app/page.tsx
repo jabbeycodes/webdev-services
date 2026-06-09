@@ -54,7 +54,7 @@ export default function HomePage() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/[0.06]">
         <Link href="/" className="text-xl font-bold tracking-tight text-white">
-          showme<span className="text-amber-500">.sites</span>
+          ShowMe <span className="text-amber-500">Web & App</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <a href="#work" className="text-sm text-neutral-400 hover:text-white transition-colors">Work</a>
@@ -142,7 +142,7 @@ export default function HomePage() {
           <div className="glass-card rounded-2xl overflow-hidden p-2">
             <Image
               src="/images/mockup-laptop.jpg"
-              alt="showme.sites portfolio showcase"
+              alt="ShowMe Web & App portfolio showcase"
               width={1200}
               height={675}
               className="rounded-xl w-full h-auto"
@@ -632,7 +632,7 @@ export default function HomePage() {
               bestFor: ["SaaS marketing site", "Agency portfolio", "Course / coaching business"],
               deliverables: [
                 "Up to 6 custom pages",
-                "Blog with CMS (you publish yourself)",
+                "Blog with autoblog — AI-generated SEO posts that bring traffic (self-publish optional)",
                 "SEO optimization + sitemap",
                 "Email capture + newsletter setup",
                 "Social sharing (OpenGraph)",
@@ -821,7 +821,7 @@ export default function HomePage() {
       <footer className="relative z-10 border-t border-white/[0.06] px-6 py-12">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <Link href="/" className="text-lg font-bold tracking-tight text-white">
-            showme<span className="text-amber-500">.sites</span>
+            ShowMe <span className="text-amber-500">Web & App</span>
           </Link>
           <div className="flex items-center gap-8 text-sm text-neutral-400">
             <a href="#work" className="hover:text-white transition-colors">
@@ -844,7 +844,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="text-xs text-neutral-500">
-            © 2026 showme.sites. All rights reserved.
+            © 2026 ShowMe Web & App. All rights reserved.
           </p>
         </div>
       </footer>
