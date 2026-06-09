@@ -647,7 +647,7 @@ export default function HomePage() {
               bestFor: ["SaaS marketing site", "Agency portfolio", "Course / coaching business"],
               deliverables: [
                 "Up to 6 custom pages",
-                "Blog with CMS (you publish yourself)",
+                "Blog with autoblog — AI-generated SEO posts that bring traffic (self-publish optional)",
                 "SEO optimization + sitemap",
                 "Email capture + newsletter setup",
                 "Social sharing (OpenGraph)",
