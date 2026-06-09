@@ -1,6 +1,6 @@
-# ShowMe Sites — Websites That Convert
+# ShowMe Web & App — Websites & Mobile Apps That Ship Fast
 
-Landing page for ShowMe Sites (`sites.shwme.app`). Built with Next.js 15 + Tailwind CSS, deployed to Vercel.
+Landing page for ShowMe Web & App. Built with Next.js 16 + Tailwind CSS v4, deployed to Vercel.
 
 ## Tech Stack
 - Next.js 15 (App Router, static export)
