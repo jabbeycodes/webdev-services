@@ -42,24 +42,24 @@ export function HeroSection() {
         </nav>
 
         {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-12">
-          <div className="grid grid-cols-12 gap-4">
+        <div className="absolute bottom-0 left-0 right-0 z-20 p-4 md:p-8 lg:p-12">
+          <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-8">
             {/* Left: Giant heading */}
-            <div className="col-span-12 lg:col-span-8">
+            <div className="flex-1 min-w-0">
               <div className="relative">
                 <WordsPullUp
                   text="ShowMe"
-                  className="text-[26vw] sm:text-[24vw] md:text-[22vw] lg:text-[20vw] xl:text-[19vw] 2xl:text-[20vw] font-medium leading-[0.85] tracking-[-0.07em] text-[#E1E0CC]"
+                  className="text-[15vw] sm:text-[18vw] md:text-[16vw] lg:text-[14vw] xl:text-[12vw] font-medium leading-[0.85] tracking-[-0.04em] text-[#E1E0CC]"
                   showAsterisk={true}
                 />
               </div>
             </div>
 
             {/* Right: Description + CTA */}
-            <div className="col-span-12 lg:col-span-4 flex flex-col justify-end">
+            <div className="lg:max-w-sm xl:max-w-md flex flex-col gap-3 lg:gap-4">
               <motion.p
-                className="text-primary/70 text-xs sm:text-sm md:text-base mb-6"
-                style={{ lineHeight: 1.2 }}
+                className="text-primary/70 text-xs sm:text-sm md:text-base"
+                style={{ lineHeight: 1.3 }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -69,13 +69,13 @@ export function HeroSection() {
 
               <motion.a
                 href="#contact"
-                className="group inline-flex items-center gap-2 bg-primary rounded-full text-black font-medium text-sm sm:text-base px-6 py-3 w-fit hover:gap-3 transition-all duration-300"
+                className="group inline-flex items-center gap-2 bg-primary rounded-full text-black font-medium text-sm sm:text-base px-5 py-3 w-fit hover:gap-3 transition-all duration-300"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
                 <span>Book a free strategy call</span>
-                <span className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="bg-black rounded-full w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <ArrowRight className="w-4 h-4 text-primary" />
                 </span>
               </motion.a>
