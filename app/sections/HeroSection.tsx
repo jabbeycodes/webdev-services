@@ -48,8 +48,8 @@ export function HeroSection() {
             <div className="flex-1 min-w-0">
               <div className="relative">
                 <WordsPullUp
-                  text="Website & Mobile Apps"
-                  className="text-[12vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] xl:text-[9vw] font-medium leading-[0.85] tracking-[-0.03em] text-[#E1E0CC]"
+                  text="I build websites & mobile apps"
+                  className="text-[11vw] sm:text-[13vw] md:text-[11vw] lg:text-[9vw] xl:text-[8vw] font-medium leading-[0.9] tracking-[-0.03em] text-[#E1E0CC]"
                   showAsterisk={false}
                 />
               </div>
