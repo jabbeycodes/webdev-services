@@ -49,6 +49,12 @@ const projects = [
     img: "/images/hero-premium.jpg",
   },
   {
+    title: "Nexora Collective",
+    tag: "E-commerce",
+    desc: "Premium lifestyle e-commerce store with product catalog, cart, checkout, and mobile-responsive design. Built for conversions from day one.",
+    img: "/images/nexora-ecommerce.jpg",
+  },
+  {
     title: "Your Project",
     tag: "Next",
     desc: "Have an idea? We turn concepts into live products. Book a call and let's scope it out.",
