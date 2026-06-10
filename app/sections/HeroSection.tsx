@@ -27,10 +27,10 @@ export function HeroSection() {
         {/* Navbar */}
         <nav className="absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 md:px-8">
           <ul className="flex items-center gap-3 sm:gap-6 md:gap-12 lg:gap-14">
-            {["Our story", "Collective", "Workshops", "Programs", "Inquiries"].map((item) => (
+            {["Work", "Process", "Pricing", "About", "Contact"].map((item) => (
               <li key={item}>
                 <a
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
+                  href={`#${item.toLowerCase()}`}
                   className="text-[10px] sm:text-xs md:text-sm transition-colors duration-300 hover:text-[#E1E0CC]"
                   style={{ color: "rgba(225, 224, 204, 0.8)" }}
                 >
@@ -64,7 +64,7 @@ export function HeroSection() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                ShowMe Web & App builds high-converting websites and mobile apps for founders who want to ship fast. You get the code. We just build it.
+                High-converting websites and mobile apps for founders who want to ship this month — not next quarter. Built with Next.js, Flutter, Supabase, and Vercel. You own everything.
               </motion.p>
 
               <motion.a
@@ -74,7 +74,7 @@ export function HeroSection() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span>Join the lab</span>
+                <span>Book a free strategy call</span>
                 <span className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <ArrowRight className="w-4 h-4 text-primary" />
                 </span>
