@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ShowMe Web & App — Websites & Mobile Apps That Ship Fast",
@@ -16,20 +13,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
-        {/*
-          Set `js` on <html> before first paint. globals.css only hides
-          `.reveal` elements under `html.js`, so visitors without JS (or if
-          hydration fails) still see all content instead of a blank page.
-        */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js');",
-          }}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&display=swap"
+          rel="stylesheet"
         />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

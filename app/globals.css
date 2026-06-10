@@ -1,186 +1,50 @@
-/* Tailwind v4 single-line import. (v3's @tailwind base/components/utilities
-   directives are removed in v4 and silently produce zero CSS.) */
+/* Tailwind v4 single-line import. */
 @import "tailwindcss";
 
-/* Expose brand tokens to Tailwind's theme so they're usable as utilities
-   (e.g. text-brand-amber) and as the var()s referenced in custom CSS below. */
 @theme {
-  --color-brand-amber: #f59e0b;
-  --color-brand-amber-deep: #d97706;
+  --color-primary: #DEDBC8;
+  --color-primary-dark: #E1E0CC;
+  --font-serif: "Instrument Serif", serif;
 }
 
-:root {
-  --amber-glow: #f59e0b;
-  --amber-deep: #d97706;
+* {
+  font-family: 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #0a0a0a;
+  background-color: #000000;
 }
 
 body {
-  background-color: #0a0a0a;
-  color: #fafafa;
+  background-color: #000000;
+  color: #E1E0CC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ——— Animations ——— */
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-float {
-  animation: float 8s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float 10s ease-in-out infinite;
-  animation-delay: -3s;
-}
-
-.animate-float-slow {
-  animation: float 14s ease-in-out infinite;
-  animation-delay: -6s;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-/* Slide up animation — starts visible, animates in */
-.animate-slide-up {
-  opacity: 1;
-  animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* ——— Glass Card ——— */
-.glass-card {
-  background: rgba(38, 38, 42, 0.65);
-  backdrop-filter: blur(24px) saturate(1.2);
-  -webkit-backdrop-filter: blur(24px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  background: rgba(48, 48, 54, 0.75);
-  border-color: rgba(245, 158, 11, 0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -12px rgba(245, 158, 11, 0.15), 0 0 0 1px rgba(245, 158, 11, 0.1);
-}
-
-/* ——— Glow Button ——— */
-.glow-btn {
-  position: relative;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  transition: all 0.3s ease;
-}
-
-.glow-btn::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #f59e0b, #fbbf24, #d97706);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  filter: blur(12px);
-}
-
-.glow-btn:hover::before {
-  opacity: 0.6;
-}
-
-.glow-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px -8px rgba(245, 158, 11, 0.5);
-}
-
-/* ——— Noise overlay ——— */
+/* ─── Noise overlays ─── */
 .noise-overlay {
-  position: relative;
-}
-.noise-overlay::after {
-  content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.bg-noise {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* ——— Marquee ——— */
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  animation: marquee 30s linear infinite;
-}
-
-/* ─── Scroll reveal ─——
-   Content must be visible by default so a no-JS / failed-hydration visitor
-   still sees everything. We only hide elements *before* reveal when JS is
-   confirmed available (html.js is set by an inline script in layout.tsx). */
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-html.js .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ——— Glow border for popular pricing card ——— */
-.glow-border {
-  position: relative;
-}
-
-.glow-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, #f59e0b, #fbbf24, #f59e0b);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.5;
-}
-
-/* ——— Selection ——— */
+/* ─── Selection ─── */
 ::selection {
-  background: rgba(245, 158, 11, 0.3);
-  color: #fff;
+  background: rgba(222, 219, 200, 0.3);
+  color: #E1E0CC;
 }
 
-/* ——— Accessibility: honor reduced-motion ———
-   Kill ambient float/marquee/reveal motion for users who opt out, and make
-   reveal content fully visible regardless of scroll position. */
+/* ─── Accessibility: honor reduced-motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -189,10 +53,5 @@ html.js .reveal.visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
-  }
-
-  html.js .reveal {
-    opacity: 1;
-    transform: none;
   }
 }
