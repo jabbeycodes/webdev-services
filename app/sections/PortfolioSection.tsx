@@ -43,12 +43,6 @@ const projects = [
     img: "/images/pulsepoint-clinic.jpg",
   },
   {
-    title: "PulsePoint Clinic",
-    tag: "Healthcare Site",
-    desc: "A responsive medical clinic website with appointment booking, patient portal, and mobile-first design for cardiovascular care.",
-    img: "/images/pulsepoint-clinic.jpg",
-  },
-  {
     title: "NovaLaunch",
     tag: "SaaS Landing Page",
     desc: "A conversion-focused landing page for an AI scheduling startup. Clean dark mode, animated sections, and integrated Calendly booking.",
