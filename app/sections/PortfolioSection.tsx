@@ -49,6 +49,12 @@ const projects = [
     img: "/images/hero-premium.jpg",
   },
   {
+    title: "Medicare Healthcare",
+    tag: "Medical Practice",
+    desc: "Professional healthcare website with appointment booking, doctor profiles, services showcase, and patient-first design. Built for trust and conversions.",
+    img: "/images/medicare-healthcare.jpg",
+  },
+  {
     title: "Nexora Collective",
     tag: "E-commerce",
     desc: "Premium lifestyle e-commerce store with product catalog, cart, checkout, and mobile-responsive design. Built for conversions from day one.",
