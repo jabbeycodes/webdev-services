@@ -15,7 +15,7 @@ export function HeroSection() {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/hero-cabin-clouds.mp4"
+          src="/videos/hero-cabin-cliffs.mp4"
         />
 
         {/* Noise overlay */}
