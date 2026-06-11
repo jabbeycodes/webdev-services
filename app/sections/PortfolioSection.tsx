@@ -76,9 +76,6 @@ const projects = [
 ];
 
 export function PortfolioSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="work" className="bg-black py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
@@ -88,16 +85,37 @@ export function PortfolioSection() {
           <p className="text-primary/70 mt-4 max-w-xl mx-auto">Real products for real founders. From community platforms to marketing sites.</p>
         </div>
 
-        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {projects.map((project, i) => {
+            // Choreographed entrance per card
+            const animations = [
+              { x: 0, y: 60, rotate: 0, scale: 1 },      // 1: slide up
+              { x: -80, y: 0, rotate: -2, scale: 1 },    // 2: from left
+              { x: 80, y: 0, rotate: 2, scale: 1 },      // 3: from right
+              { x: 0, y: 0, rotate: 0, scale: 0.85 },    // 4: scale up
+              { x: -60, y: 40, rotate: -1, scale: 1 },   // 5: bottom-left
+              { x: 60, y: 40, rotate: 1, scale: 1 },     // 6: bottom-right
+              { x: 0, y: 0, rotate: 0, scale: 0.85 },    // 7: scale up
+              { x: 0, y: 60, rotate: 0, scale: 1 },      // 8: slide up
+            ];
+            const anim = animations[i % animations.length];
+
+            return (
             <motion.div
               key={i}
-              className="bg-[#101010] rounded-2xl overflow-hidden group"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              className="bg-[#101010] rounded-2xl overflow-hidden group relative"
+              initial={{
+                opacity: 0,
+                x: anim.x,
+                y: anim.y,
+                rotate: anim.rotate,
+                scale: anim.scale,
+              }}
+              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
               transition={{
-                duration: 0.6,
-                delay: i * 0.1,
+                duration: 0.9,
+                delay: (i % 3) * 0.15,
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
@@ -129,7 +147,8 @@ export function PortfolioSection() {
                 )}
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
