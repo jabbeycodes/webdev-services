@@ -44,13 +44,10 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <p>
-                I've shipped 25+ products for founders across two continents. Apps, sites, dashboards - the kind that turn visitors into customers and ideas into revenue. I know what works because I've built it.
+                NC A&T master's in tech management. 25+ products shipped. Two continents of founder problems solved.
               </p>
               <p>
-                Other agencies sell you a process. I give you a product. Real code you own, deployed in weeks, designed to convert from day one. No retainers holding your codebase hostage. No discovery phase that turns into a $50K invoice.
-              </p>
-              <p>
-                ShowMe Web & App is what I'd want if I were building again: one founder, one stack, zero middlemen. Born in Ghana. Built in the US. Shipping worldwide.
+                I don't sell you a process. I give you a product. Code you own, shipped in weeks, designed to convert. No agency overhead, no $50K discovery invoices, no waiting.
               </p>
             </motion.div>
 
