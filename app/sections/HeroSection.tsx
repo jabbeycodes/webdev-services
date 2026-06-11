@@ -43,7 +43,7 @@ export function HeroSection() {
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 right-0 z-20 p-4 md:p-8 lg:p-12">
-          <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end gap-3 sm:gap-4 lg:gap-8">
             {/* Left: Giant heading */}
             <div className="flex-1 min-w-0">
               <div className="relative">
@@ -56,7 +56,7 @@ export function HeroSection() {
             </div>
 
             {/* Right: Description + CTA */}
-            <div className="lg:max-w-sm xl:max-w-md flex flex-col gap-3 lg:gap-4">
+            <div className="lg:max-w-sm xl:max-w-md flex flex-col gap-2 sm:gap-3 lg:gap-4 lg:mb-2">
               <motion.p
                 className="text-primary/70 text-xs sm:text-sm md:text-base"
                 style={{ lineHeight: 1.3 }}
