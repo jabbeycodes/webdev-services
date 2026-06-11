@@ -15,8 +15,8 @@ export function AboutSection() {
           {/* Image side */}
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
             <Image
-              src="/images/showme-mobile.jpg"
-              alt="ShowMe community mobile app"
+              src="/images/josh-founder.jpg"
+              alt="Josh Abbey, founder of ShowMe Web & App"
               fill
               className="object-cover"
             />
