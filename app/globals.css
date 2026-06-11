@@ -47,6 +47,14 @@ body::after {
   z-index: -1;
 }
 
+/* Mobile: position background to show the colored content (center) */
+@media (max-width: 768px) {
+  body::before {
+    background-position: 35% center;
+    background-size: 250% auto;
+  }
+}
+
 /* ─── Noise overlays ─── */
 .noise-overlay {
   position: absolute;
