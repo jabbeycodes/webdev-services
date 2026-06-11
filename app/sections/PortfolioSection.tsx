@@ -34,7 +34,7 @@ const projects = [
     title: "ShowMe Blog",
     tag: "Content Engine",
     desc: "Automated SEO content pipeline generating 3 posts daily with Supabase scheduling, Resend email, and social publishing.",
-    img: "/images/site-redesign.jpg",
+    img: "/images/showme-blog.jpg",
   },
   {
     title: "PulsePoint Clinic",
