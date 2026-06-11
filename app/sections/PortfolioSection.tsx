@@ -112,8 +112,7 @@ export function PortfolioSection() {
                 scale: anim.scale,
               }}
               whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.1, margin: "0px 0px 0px 0px" }}
-              animate={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{
                 duration: 0.9,
                 delay: (i % 3) * 0.15,
