@@ -61,6 +61,12 @@ const projects = [
     img: "/images/nexora-ecommerce.jpg",
   },
   {
+    title: "FitForce",
+    tag: "Fitness Brand",
+    desc: "High-energy fitness site with program showcase, membership tiers, and trainer booking. Dark theme, fast loading, optimized for mobile.",
+    img: "/images/fitforce-fitness.jpg",
+  },
+  {
     title: "Your Project",
     tag: "Next",
     desc: "Have an idea? We turn concepts into live products. Book a call and let's scope it out.",
