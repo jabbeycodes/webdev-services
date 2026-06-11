@@ -44,7 +44,7 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <p>
-                I've shipped 15+ products for founders across two continents. Apps, sites, dashboards — the kind that turn visitors into customers and ideas into revenue. I know what works because I've built it.
+                I've shipped 25+ products for founders across two continents. Apps, sites, dashboards - the kind that turn visitors into customers and ideas into revenue. I know what works because I've built it.
               </p>
               <p>
                 Other agencies sell you a process. I give you a product. Real code you own, deployed in weeks, designed to convert from day one. No retainers holding your codebase hostage. No discovery phase that turns into a $50K invoice.
