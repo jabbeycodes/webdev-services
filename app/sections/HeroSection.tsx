@@ -15,7 +15,7 @@ export function HeroSection() {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
+          src="/videos/hero-cabin-clouds.mp4"
         />
 
         {/* Noise overlay */}
