@@ -21,15 +21,24 @@ body {
   color: #E1E0CC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Fixed background image with dark overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
   background-image: url('/images/bg-warm-cool-waves.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: -2;
 }
 
-/* Dark overlay on top of background for readability */
-body::before {
+body::after {
   content: '';
   position: fixed;
   inset: 0;
