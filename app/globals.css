@@ -21,6 +21,21 @@ body {
   color: #E1E0CC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('/images/bg-warm-cool-waves.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Dark overlay on top of background for readability */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ─── Noise overlays ─── */
