@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-black border-t border-white/[0.06] px-6 py-12">
+    <footer className="border-t border-white/[0.06] px-6 py-12">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <Link href="/" className="text-lg font-bold tracking-tight text-[#E1E0CC]">
           ShowMe <span className="text-primary">Web & App</span>

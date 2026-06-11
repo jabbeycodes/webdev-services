@@ -77,7 +77,7 @@ const projects = [
 
 export function PortfolioSection() {
   return (
-    <section id="work" className="bg-black py-24 md:py-32 px-6">
+    <section id="work" className="py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-3">Our Work</p>

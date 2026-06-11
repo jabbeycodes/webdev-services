@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-black py-24 md:py-32 px-6">
+    <section id="contact" className="py-24 md:py-32 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="bg-[#101010] rounded-3xl p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden"

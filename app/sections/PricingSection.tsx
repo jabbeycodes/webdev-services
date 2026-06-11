@@ -112,7 +112,7 @@ export function PricingSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="pricing" className="bg-black py-24 md:py-32 px-6">
+    <section id="pricing" className="py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-3">Pricing</p>
