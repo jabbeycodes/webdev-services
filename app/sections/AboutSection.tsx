@@ -38,24 +38,24 @@ export function AboutSection() {
             </motion.h2>
 
             <motion.div
-              className="space-y-4 text-primary/70 text-sm sm:text-base leading-relaxed"
+              className="space-y-5 text-primary/70 text-sm sm:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <p>
-                I started ShowMe Web & App because I kept meeting founders with great ideas who were stuck waiting months for a simple website. They'd hire agencies, burn budget, and still have nothing live.
+                I've shipped 15+ products for founders across two continents. Apps, sites, dashboards — the kind that turn visitors into customers and ideas into revenue. I know what works because I've built it.
               </p>
               <p>
-                I do the opposite: ship in weeks, not months. You get the full code, the real product, and a clear path forward. No vendor lock-in. No scope creep. Just results.
+                Other agencies sell you a process. I give you a product. Real code you own, deployed in weeks, designed to convert from day one. No retainers holding your codebase hostage. No discovery phase that turns into a $50K invoice.
               </p>
               <p>
-                Ghanaian by birth, US-based by hustle. I bring dual-market perspective — American tech standards with execution speed that doesn't waste your budget.
+                ShowMe Web & App is what I'd want if I were building again: one founder, one stack, zero middlemen. Born in Ghana. Built in the US. Shipping worldwide.
               </p>
             </motion.div>
 
             <motion.div
-              className="mt-8 flex items-center gap-4"
+              className="mt-10 flex items-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
