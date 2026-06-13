@@ -1,6 +1,5 @@
 import { HeroSection } from "./sections/HeroSection";
 import { PortfolioSection } from "./sections/PortfolioSection";
-import { FeaturesSection } from "./sections/FeaturesSection";
 import { AboutSection } from "./sections/AboutSection";
 import { PricingSection } from "./sections/PricingSection";
 import { ContactSection } from "./sections/ContactSection";
@@ -11,7 +10,6 @@ export default function HomePage() {
     <main className="min-h-screen">
       <HeroSection />
       <PortfolioSection />
-      <FeaturesSection />
       <AboutSection />
       <PricingSection />
       <ContactSection />
