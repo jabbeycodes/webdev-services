@@ -137,7 +137,7 @@ function FeatureCard({
 
 export function FeaturesSection() {
   return (
-    <section id="collective" className="relative min-h-screen bg-black py-24 md:py-32 px-6">
+    <section id="process" className="relative min-h-screen bg-black py-24 md:py-32 px-6">
       {/* Subtle noise background */}
       <div className="bg-noise opacity-[0.15] pointer-events-none" />
 
