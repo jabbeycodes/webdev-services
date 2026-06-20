@@ -43,6 +43,12 @@ const projects = [
     img: "/images/pulsepoint-clinic.jpg",
   },
   {
+    title: "LifePath of Mid-Missouri",
+    tag: "Healthcare & Disability Services",
+    desc: "Compassionate care website for a disability services provider in Columbia, MO. Person-centered design with service showcase, career portal, and family resources. \"Compassionate Care. Meaningful Lives.\"",
+    img: "/images/lifepath-healthcare.jpg",
+  },
+  {
     title: "NovaLaunch",
     tag: "SaaS Landing Page",
     desc: "A conversion-focused landing page for an AI scheduling startup. Clean dark mode, animated sections, and integrated Calendly booking.",
