@@ -44,7 +44,7 @@ const projects = [
   },
   {
     title: "LifePath of Mid-Missouri",
-    tag: "Healthcare & Disability Services",
+    tag: "Healthcare Agency",
     desc: "Compassionate care website for a disability services provider in Columbia, MO. Person-centered design with service showcase, career portal, and family resources. \"Compassionate Care. Meaningful Lives.\"",
     img: "/images/lifepath-healthcare.jpg",
   },
