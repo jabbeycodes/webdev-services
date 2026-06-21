@@ -41,6 +41,26 @@ export function isSocialAddonSelected(values: Record<string, string | string[] |
   return answer.startsWith("Yes —");
 }
 
+/** Custom business email on your domain — add-on */
+export const EMAIL_ADDON = {
+  price: 50,
+  title: "Custom business email setup",
+  badge: "Optional add-on",
+  priceNote:
+    "One-time $50 fee added to your website project — not included in build packages or the monthly retainer.",
+  includes: [
+    "Professional email on your domain (e.g. hello@yourbrand.com)",
+    "Mailbox setup on Google Workspace, Microsoft 365, Zoho, or your host",
+    "DNS configuration so email sends & receives correctly",
+    "Tested and handed off before launch",
+  ],
+} as const;
+
+export function isEmailAddonSelected(values: Record<string, string | string[] | undefined>): boolean {
+  const answer = values.businessEmailAddon?.toString() ?? "";
+  return answer.startsWith("Yes —");
+}
+
 export interface OnboardingSection {
   id: string;
   title: string;
@@ -685,15 +705,39 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         ],
       },
       {
-        id: "emailSetup",
-        label: "Business email setup",
+        id: "businessEmailAddon",
+        label: "Add-on: Custom business email setup ($50)",
         type: "select",
         group: "Domain & hosting",
-        helpText: "Professional email on your domain (e.g. hello@yourbrand.com) builds trust.",
+        helpText:
+          "Optional one-time add-on. We set up professional email on your domain — e.g. hello@yourbrand.com, info@, support@ — so customers reach you at a branded address, not Gmail or Yahoo.",
         options: [
-          "Already set up (Google Workspace, Microsoft 365, etc.)",
-          "Need professional email on my domain",
-          "Not needed yet",
+          "Yes — add the $50 business email setup add-on",
+          "Maybe — send me details on what's included",
+          "No — I already have business email on my domain",
+          "Not sure yet",
+        ],
+      },
+      {
+        id: "businessEmailAddresses",
+        label: "Which email addresses do you want? (if adding the $50 add-on)",
+        type: "textarea",
+        group: "Domain & hosting",
+        placeholder: "hello@yourbrand.com, info@yourbrand.com, support@yourbrand.com, yourname@…",
+        helpText: "List every address you need — we'll set them up as part of the $50 add-on.",
+      },
+      {
+        id: "businessEmailProvider",
+        label: "Email provider preference (optional)",
+        type: "select",
+        group: "Domain & hosting",
+        options: [
+          "Google Workspace (Gmail on your domain)",
+          "Microsoft 365 (Outlook on your domain)",
+          "Zoho Mail",
+          "Email through my web host",
+          "No preference — recommend the best option",
+          "Not sure",
         ],
       },
       {
@@ -760,6 +804,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
           "Social account creation is a $250 one-time add-on (includes 1 month management). Ongoing social, IT, and marketing are on the $400/mo retainer.",
         options: [
           "Social account creation + 1 month management — $250 add-on",
+          "Custom business email setup — $50 add-on",
           "Social media management (ongoing — $400/mo retainer)",
           "Social content creation (ongoing — $400/mo retainer)",
           "IT & business tools support ($400/mo retainer)",
@@ -932,6 +977,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
           "$3,000–$6,000 (Pro — web app / SaaS)",
           "$2,500–$8,000 (Mobile app)",
           "$250 add-on (Social accounts + 1 month management)",
+          "$50 add-on (Custom business email setup)",
           "$400/mo (Retainer — IT, business tools, social, marketing & admin)",
           "Custom scope — need a quote",
           "Not sure — need recommendation",
@@ -993,4 +1039,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v11";
+export const STORAGE_KEY = "showme-onboarding-draft-v12";

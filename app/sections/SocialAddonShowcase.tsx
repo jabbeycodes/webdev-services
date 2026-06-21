@@ -16,13 +16,13 @@ const includes = [
 export function SocialAddonShowcase() {
   return (
     <motion.div
-      className="mt-6 md:mt-10"
+      className="h-full"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="rounded-3xl border border-white/[0.1] bg-[#101010] p-6 sm:p-8 lg:p-10">
+      <div className="rounded-3xl border border-white/[0.1] bg-[#101010] p-6 sm:p-8 lg:p-10 h-full">
         <div className="flex flex-wrap items-start justify-between gap-6 mb-6">
           <div className="max-w-2xl">
             <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-primary/80 mb-3">

@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { EmailAddonShowcase } from "./EmailAddonShowcase";
 import { RetainerShowcase } from "./RetainerShowcase";
 import { SocialAddonShowcase } from "./SocialAddonShowcase";
 
@@ -216,7 +217,10 @@ export function PricingSection() {
           ))}
         </div>
 
-        <SocialAddonShowcase />
+        <div className="mt-6 md:mt-10 grid lg:grid-cols-2 gap-4">
+          <EmailAddonShowcase />
+          <SocialAddonShowcase />
+        </div>
 
         <RetainerShowcase />
       </div>

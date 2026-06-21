@@ -4,9 +4,11 @@ import Link from "next/link";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, Check, Copy, Download, Mail, RotateCcw } from "lucide-react";
 import {
+  EMAIL_ADDON,
   ONBOARDING_SECTIONS,
   SOCIAL_ADDON,
   STORAGE_KEY,
+  isEmailAddonSelected,
   isSocialAddonSelected,
   type OnboardingSection,
   type Question,
@@ -397,6 +399,9 @@ export function OnboardingChecklist() {
                         </h3>
                       </>
                     )}
+                    {q.id === "businessEmailAddon" && (
+                      <EmailAddonPricingBox values={values} />
+                    )}
                     <Field
                       question={q}
                       value={values[q.id]}
@@ -521,6 +526,52 @@ export function OnboardingChecklist() {
   );
 }
 
+function EmailAddonPricingBox({ values }: { values: FormValues }) {
+  const selected = isEmailAddonSelected(values);
+  const addresses = values.businessEmailAddresses?.toString().trim();
+
+  return (
+    <div
+      className={`rounded-2xl border p-4 sm:p-5 mb-2 ${
+        selected ? "border-primary/40 bg-primary/10" : "border-white/[0.1] bg-black/30"
+      }`}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-primary/80">
+            {EMAIL_ADDON.badge}
+          </span>
+          <p className="text-base sm:text-lg font-bold text-[#E1E0CC] mt-1">{EMAIL_ADDON.title}</p>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="text-2xl sm:text-3xl font-bold text-primary">+${EMAIL_ADDON.price}</p>
+          <p className="text-[11px] text-primary/55">one-time add-on</p>
+        </div>
+      </div>
+
+      <p className="text-xs text-primary/60 mb-3">{EMAIL_ADDON.priceNote}</p>
+
+      <ul className="space-y-1.5 mb-3">
+        {EMAIL_ADDON.includes.map((item) => (
+          <li key={item} className="text-xs sm:text-sm text-primary/85 flex items-start gap-2">
+            <span className="text-primary shrink-0">✓</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      {selected && (
+        <p className="mt-3 text-sm font-medium text-primary bg-black/30 rounded-xl px-3 py-2.5 border border-primary/20">
+          ✓ Added to your brief — ${EMAIL_ADDON.price} email add-on
+          {addresses
+            ? " · addresses listed below"
+            : " · list your addresses in the next question"}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function SocialAddonPricingBox({
   values,
 }: {
@@ -616,6 +667,21 @@ function Field({
       {question.helpText && (
         <p className="text-xs text-primary/45 mb-2">{question.helpText}</p>
       )}
+
+      {question.id === "businessEmailAddresses" && isEmailAddonSelected(allValues) && (
+        <p className="text-xs text-primary/70 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-2">
+          Included in your <strong>+${EMAIL_ADDON.price}</strong> business email add-on — list every
+          address you want us to create.
+        </p>
+      )}
+
+      {question.id === "businessEmailAddresses" &&
+        !isEmailAddonSelected(allValues) &&
+        !(value as string)?.trim() && (
+          <p className="text-xs text-primary/45 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 mb-2">
+            Answer the $50 email add-on question above first if you need custom business email.
+          </p>
+        )}
 
       {question.id === "socialPlatformsSetup" && isSocialAddonSelected(allValues) && (
         <p className="text-xs text-primary/70 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-2">
