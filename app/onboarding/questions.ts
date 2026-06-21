@@ -602,10 +602,78 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
     id: "technical",
     title: "Technical, SEO & marketing",
     description:
-      "Social account setup, marketing, infrastructure, and how people will find you after launch.",
+      "Domain name, social accounts, marketing, infrastructure, and how people will find you after launch.",
     sectionNote:
-      "Social media account creation and management questions are at the top of this section — answer those first if you need help setting up Instagram, Facebook, LinkedIn, or other profiles.",
+      "Domain questions are first, then social accounts, then IT and SEO. Scroll through the full section — each group has its own heading.",
     questions: [
+      {
+        id: "domainStatus",
+        label: "Do you already have a domain name?",
+        type: "select",
+        group: "Domain & hosting",
+        helpText: "Your domain is your website address (e.g. yourbrand.com). Tell us where you are today.",
+        options: [
+          "Yes — I already own a domain",
+          "No — I need help choosing and purchasing one",
+          "I have ideas but haven't bought yet",
+          "Using a subdomain for now (e.g. mybrand.vercel.app)",
+          "Not sure — need guidance",
+        ],
+      },
+      {
+        id: "domainCurrent",
+        label: "Your current domain (if you already own one)",
+        type: "text",
+        group: "Domain & hosting",
+        placeholder: "yourbrand.com",
+        helpText: "Leave blank if you don't have a domain yet.",
+      },
+      {
+        id: "domainName",
+        label: "Preferred domain name(s) or ideas",
+        type: "text",
+        group: "Domain & hosting",
+        placeholder: "getyourbrand.com, yourbrand.co, tryyourbrand.com…",
+        helpText: "List names you'd like — we'll check availability and suggest alternatives if taken.",
+      },
+      {
+        id: "domainPreferences",
+        label: "Domain name preferences",
+        type: "textarea",
+        group: "Domain & hosting",
+        placeholder:
+          "e.g. must be .com, include city name, short & memorable, match business name exactly, avoid hyphens…",
+        helpText:
+          "Extensions (.com, .co, .app), keywords to include, naming style, backup options, or names to avoid.",
+      },
+      {
+        id: "domainRegistrar",
+        label: "Where is your domain registered? (if you have one)",
+        type: "select",
+        group: "Domain & hosting",
+        options: [
+          "GoDaddy",
+          "Namecheap",
+          "Google Domains / Squarespace",
+          "Cloudflare",
+          "Hostinger",
+          "Other registrar",
+          "Don't have a domain yet",
+          "Not sure",
+        ],
+      },
+      {
+        id: "emailSetup",
+        label: "Business email setup",
+        type: "select",
+        group: "Domain & hosting",
+        helpText: "Professional email on your domain (e.g. hello@yourbrand.com) builds trust.",
+        options: [
+          "Already set up (Google Workspace, Microsoft 365, etc.)",
+          "Need professional email on my domain",
+          "Not needed yet",
+        ],
+      },
       {
         id: "socialPageSetup",
         label: "Do you need help creating social media accounts for your business?",
@@ -742,36 +810,6 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
           "6–15 team members",
           "16–50 team members",
           "50+ (enterprise — custom scope)",
-        ],
-      },
-      {
-        id: "domainStatus",
-        label: "Domain name status",
-        type: "select",
-        group: "Domain & hosting",
-        options: [
-          "I own a domain — ready to connect",
-          "I know what I want — need to purchase",
-          "I need help choosing a domain",
-          "Using a subdomain for now",
-        ],
-      },
-      {
-        id: "domainName",
-        label: "Preferred domain name(s)",
-        type: "text",
-        placeholder: "yourbrand.com, getyourbrand.com…",
-        group: "Domain & hosting",
-      },
-      {
-        id: "emailSetup",
-        label: "Business email setup",
-        type: "select",
-        group: "Domain & hosting",
-        options: [
-          "Already set up (Google Workspace, etc.)",
-          "Need professional email (hello@yourbrand.com)",
-          "Not needed",
         ],
       },
       {
@@ -932,4 +970,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v8";
+export const STORAGE_KEY = "showme-onboarding-draft-v9";
