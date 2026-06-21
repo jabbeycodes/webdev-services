@@ -5,7 +5,9 @@ import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "rea
 import { ArrowLeft, Check, Copy, Download, Mail, RotateCcw } from "lucide-react";
 import {
   ONBOARDING_SECTIONS,
+  SOCIAL_ADDON,
   STORAGE_KEY,
+  isSocialAddonSelected,
   type OnboardingSection,
   type Question,
 } from "./questions";
@@ -386,15 +388,21 @@ export function OnboardingChecklist() {
                 return (
                   <Fragment key={q.id}>
                     {showGroup && (
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-primary/50 pt-4 first:pt-0 border-t border-white/[0.06] first:border-0">
-                        {q.group}
-                      </h3>
+                      <>
+                        {q.group === "Social accounts & marketing" && (
+                          <SocialAddonPricingBox values={values} />
+                        )}
+                        <h3 className="text-xs font-semibold uppercase tracking-widest text-primary/50 pt-4 first:pt-0 border-t border-white/[0.06] first:border-0">
+                          {q.group}
+                        </h3>
+                      </>
                     )}
                     <Field
                       question={q}
                       value={values[q.id]}
                       onChange={setField}
                       onToggleCheckbox={toggleCheckbox}
+                      allValues={values}
                     />
                   </Fragment>
                 );
@@ -513,16 +521,74 @@ export function OnboardingChecklist() {
   );
 }
 
+function SocialAddonPricingBox({
+  values,
+}: {
+  values: FormValues;
+}) {
+  const selected = isSocialAddonSelected(values);
+  const platformCount = ((values.socialPlatformsSetup as string[]) || []).length;
+
+  return (
+    <div
+      className={`rounded-2xl border p-4 sm:p-5 mb-2 ${
+        selected
+          ? "border-primary/40 bg-primary/10"
+          : "border-white/[0.1] bg-black/30"
+      }`}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-primary/80">
+            {SOCIAL_ADDON.badge}
+          </span>
+          <p className="text-base sm:text-lg font-bold text-[#E1E0CC] mt-1">{SOCIAL_ADDON.title}</p>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="text-2xl sm:text-3xl font-bold text-primary">+${SOCIAL_ADDON.price}</p>
+          <p className="text-[11px] text-primary/55">one-time · includes 1 month management</p>
+        </div>
+      </div>
+
+      <p className="text-xs text-primary/60 mb-3">{SOCIAL_ADDON.priceNote}</p>
+
+      <ul className="space-y-1.5 mb-3">
+        {SOCIAL_ADDON.includes.map((item) => (
+          <li key={item} className="text-xs sm:text-sm text-primary/85 flex items-start gap-2">
+            <span className="text-primary shrink-0">✓</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <p className="text-[11px] text-primary/45 border-t border-white/[0.06] pt-3">
+        {SOCIAL_ADDON.afterMonthNote}
+      </p>
+
+      {selected && (
+        <p className="mt-3 text-sm font-medium text-primary bg-black/30 rounded-xl px-3 py-2.5 border border-primary/20">
+          ✓ Added to your brief — ${SOCIAL_ADDON.price} social add-on
+          {platformCount > 0
+            ? ` · ${platformCount} platform${platformCount === 1 ? "" : "s"} selected`
+            : " · pick platforms in the next question"}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function Field({
   question,
   value,
   onChange,
   onToggleCheckbox,
+  allValues,
 }: {
   question: Question;
   value: string | string[] | undefined;
   onChange: (id: string, value: string | string[]) => void;
   onToggleCheckbox: (id: string, option: string) => void;
+  allValues: FormValues;
 }) {
   const inputClass =
     "w-full bg-black/40 border border-white/[0.1] rounded-xl px-4 py-3.5 min-h-[48px] text-[#E1E0CC] text-base md:text-sm placeholder:text-primary/30 focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-colors touch-manipulation";
@@ -550,6 +616,21 @@ function Field({
       {question.helpText && (
         <p className="text-xs text-primary/45 mb-2">{question.helpText}</p>
       )}
+
+      {question.id === "socialPlatformsSetup" && isSocialAddonSelected(allValues) && (
+        <p className="text-xs text-primary/70 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-2">
+          These platforms are included in your <strong>+${SOCIAL_ADDON.price}</strong> add-on (setup
+          + 1 month management each).
+        </p>
+      )}
+
+      {question.id === "socialPlatformsSetup" &&
+        !isSocialAddonSelected(allValues) &&
+        !(value as string[])?.length && (
+          <p className="text-xs text-primary/45 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 mb-2">
+            Answer the question above first if you want the ${SOCIAL_ADDON.price} social add-on.
+          </p>
+        )}
 
       {question.type === "textarea" && (
         <textarea

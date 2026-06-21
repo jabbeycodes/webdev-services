@@ -19,6 +19,28 @@ export interface Question {
   group?: string;
 }
 
+/** Social media account creation add-on — keep in sync with SocialAddonShowcase on pricing page */
+export const SOCIAL_ADDON = {
+  price: 250,
+  retainerPrice: 400,
+  title: "Social account creation + 1 month management",
+  badge: "Optional add-on",
+  priceNote:
+    "One-time $250 fee added to your website project — not included in build packages or the monthly retainer.",
+  includes: [
+    "Business account creation on your chosen platforms",
+    "Profile setup — bio, links, branding, highlights",
+    "1 full month of posting, scheduling & content management",
+  ],
+  afterMonthNote:
+    "After month 1, continue with the $400/mo retainer for ongoing social & marketing — or manage accounts yourself.",
+} as const;
+
+export function isSocialAddonSelected(values: Record<string, string | string[] | undefined>): boolean {
+  const answer = values.socialPageSetup?.toString() ?? "";
+  return answer.startsWith("Yes —");
+}
+
 export interface OnboardingSection {
   id: string;
   title: string;
@@ -971,4 +993,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v10";
+export const STORAGE_KEY = "showme-onboarding-draft-v11";
