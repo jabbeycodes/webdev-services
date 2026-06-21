@@ -48,14 +48,43 @@ function formatAnswers(values: FormValues): string {
   return lines.join("\n");
 }
 
+function isQuestionAnswered(
+  question: Question,
+  value: string | string[] | undefined
+): boolean {
+  if (Array.isArray(value)) return value.length > 0;
+  return Boolean(value?.toString().trim());
+}
+
+/** Minimum answers needed in a section (at least 10%, rounded up, minimum 1). */
+function getSectionMinimumAnswers(section: OnboardingSection): number {
+  if (section.questions.length === 0) return 0;
+  return Math.max(1, Math.ceil(section.questions.length * 0.1));
+}
+
+function getSectionAnsweredCount(
+  section: OnboardingSection,
+  values: FormValues
+): number {
+  return section.questions.filter((q) => isQuestionAnswered(q, values[q.id])).length;
+}
+
 function isSectionComplete(section: OnboardingSection, values: FormValues): boolean {
-  return section.questions
-    .filter((q) => q.required)
-    .every((q) => {
-      const v = values[q.id];
-      if (Array.isArray(v)) return v.length > 0;
-      return Boolean(v?.toString().trim());
-    });
+  const answered = getSectionAnsweredCount(section, values);
+  const minimum = getSectionMinimumAnswers(section);
+
+  // Require at least 10% of questions answered (min 1) — never mark empty sections done.
+  if (answered < minimum) return false;
+
+  const required = section.questions.filter((q) => q.required);
+  // Note: [].every(...) is true in JS — only skip required check when there are none.
+  if (required.length === 0) return true;
+
+  return required.every((q) => isQuestionAnswered(q, values[q.id]));
+}
+
+function getIncompleteSections(values: FormValues): OnboardingSection[] {
+  return ONBOARDING_SECTIONS.filter((section) => !isSectionComplete(section, values));
 }
 
 function isFormValid(values: FormValues): boolean {
@@ -96,6 +125,17 @@ export function OnboardingChecklist() {
   const progress = Math.round((completedCount / ONBOARDING_SECTIONS.length) * 100);
   const activeSection = ONBOARDING_SECTIONS[activeStep];
   const formPanelRef = useRef<HTMLDivElement>(null);
+
+  const activeSectionProgress = useMemo(() => {
+    const answered = getSectionAnsweredCount(activeSection, values);
+    const minimum = getSectionMinimumAnswers(activeSection);
+    return {
+      answered,
+      minimum,
+      total: activeSection.questions.length,
+      done: isSectionComplete(activeSection, values),
+    };
+  }, [activeSection, values]);
 
   const goToStep = useCallback((step: number) => {
     const next = Math.max(0, Math.min(step, ONBOARDING_SECTIONS.length - 1));
@@ -157,7 +197,22 @@ export function OnboardingChecklist() {
 
   const handleEmail = () => {
     if (!isFormValid(values)) {
-      setStatus("Please fill in your name, business name, and email (marked with *) before sending.");
+      const incomplete = getIncompleteSections(values);
+      const basicsMissing = ["businessName", "contactName", "email"].some(
+        (id) => !isQuestionAnswered({ id, label: "", type: "text" }, values[id])
+      );
+
+      if (basicsMissing) {
+        setStatus(
+          "Please fill in your name, business name, and email (marked with *) before sending."
+        );
+      } else if (incomplete.length > 0) {
+        setStatus(
+          `Answer at least a few questions in each section before sending. Still need progress in: ${incomplete.map((s) => s.title).join(", ")}.`
+        );
+      } else {
+        setStatus("Please complete the required fields before sending.");
+      }
       return;
     }
     const subject = encodeURIComponent(
@@ -193,8 +248,9 @@ export function OnboardingChecklist() {
           </h1>
           <p className="text-primary/70 max-w-2xl text-sm sm:text-base leading-relaxed">
             A detailed project brief covering your business, goals, audience, brand, content,
-            conversion strategy, and technical needs. Only your name, business name, and email are
-            required — skip anything else you&apos;re not sure about. Progress saves automatically.
+            conversion strategy, and technical needs. Your name, business name, and email are
+            required to send — plus at least a few answers in every section. Progress saves
+            automatically.
           </p>
         </header>
 
@@ -282,7 +338,8 @@ export function OnboardingChecklist() {
                     <span>
                       {section.title}
                       <span className="block text-[10px] text-primary/40 mt-0.5">
-                        {section.questions.length} questions
+                        {getSectionAnsweredCount(section, values)}/{section.questions.length}{" "}
+                        · need {getSectionMinimumAnswers(section)}+
                       </span>
                     </span>
                   </span>
@@ -303,6 +360,17 @@ export function OnboardingChecklist() {
                 {activeSection.title}
               </h2>
               <p className="text-primary/60 text-sm leading-relaxed">{activeSection.description}</p>
+              <p
+                className={`mt-3 text-xs rounded-lg px-3 py-2 border ${
+                  activeSectionProgress.done
+                    ? "text-primary/70 bg-primary/5 border-primary/10"
+                    : "text-primary/55 bg-white/[0.03] border-white/[0.06]"
+                }`}
+              >
+                {activeSectionProgress.done
+                  ? "Section complete"
+                  : `${activeSectionProgress.answered} of ${activeSectionProgress.total} answered · answer at least ${activeSectionProgress.minimum} to complete this section`}
+              </p>
               {activeSection.sectionNote && (
                 <p className="mt-4 text-sm text-primary/75 bg-primary/5 border border-primary/10 rounded-xl px-3 py-3 sm:px-4 leading-relaxed">
                   {activeSection.sectionNote}
@@ -396,7 +464,8 @@ export function OnboardingChecklist() {
           <h3 className="text-lg font-bold text-[#E1E0CC] mb-2">Send your brief to Josh</h3>
           <p className="text-primary/60 text-sm mb-6">
             When you&apos;re done, email your answers directly or download a copy for your records.
-            Only your name, business name, and email are required to send.
+            Name, business name, and email are required — plus at least 10% of questions answered
+            in each section before you can send.
           </p>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
             <button

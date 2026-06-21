@@ -152,6 +152,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         type: "select",
         options: [
           "Single landing page",
+          "Multi-page website",
           "Multi-page marketing / brochure site",
           "E-commerce store",
           "Web app / SaaS platform",
