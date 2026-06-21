@@ -705,6 +705,22 @@ function Field({
           </p>
         )}
 
+      {question.id === "socialContentNeeds" && isSocialAddonSelected(allValues) && (
+        <p className="text-xs text-primary/70 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-2">
+          All options below are included in your <strong>+${SOCIAL_ADDON.price}</strong> add-on —
+          posting, scheduling, content, graphics, and management for month one.
+        </p>
+      )}
+
+      {question.id === "socialContentNeeds" &&
+        !isSocialAddonSelected(allValues) &&
+        !(value as string[])?.length && (
+          <p className="text-xs text-primary/45 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 mb-2">
+            Add the ${SOCIAL_ADDON.price} social package above first — then tell us what to focus on
+            in your first month.
+          </p>
+        )}
+
       {question.id === "socialPlatformsSetup" && isSocialAddonSelected(allValues) && (
         <p className="text-xs text-primary/70 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-2">
           These platforms are included in your <strong>+${SOCIAL_ADDON.price}</strong> add-on (setup

@@ -31,6 +31,9 @@ export const SOCIAL_ADDON = {
     "Business account creation on your chosen platforms",
     "Profile setup — bio, links, branding, highlights",
     "1 full month of posting, scheduling & content management",
+    "Captions, content ideas & creative direction",
+    "Graphics, carousels & short-form video",
+    "Community management & replies",
   ],
   afterMonthNote:
     "After month 1, continue with the $400/mo retainer for ongoing social & marketing — or manage accounts yourself.",
@@ -746,7 +749,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         type: "select",
         group: "Social accounts & marketing",
         helpText:
-          "Optional one-time add-on to your website project — not included in build packages or the monthly retainer. We create your business accounts, set up profiles to match your brand, and manage them for your first month.",
+          "Optional one-time $250 add-on — everything below is included: account creation, profile setup, posting, scheduling, content, graphics, and management for your first full month. Not part of build packages or the monthly retainer.",
         options: [
           "Yes — add the $250 package (account creation + 1 month management)",
           "Maybe — send me details on what's included",
@@ -759,7 +762,8 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         label: "Which social accounts should we create? (if adding the $250 package)",
         type: "checkbox-group",
         group: "Social accounts & marketing",
-        helpText: "Select platforms for the $250 add-on — account setup plus 1 month of management on each selected platform.",
+        helpText:
+          "Select platforms for the $250 add-on — setup plus full first-month management (posting, content, scheduling) on each platform you choose.",
         options: [
           "Instagram",
           "Facebook",
@@ -774,6 +778,22 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         ],
       },
       {
+        id: "socialContentNeeds",
+        label: "First-month social focus (all included in $250 add-on)",
+        type: "checkbox-group",
+        group: "Social accounts & marketing",
+        helpText:
+          "Optional — only if you're adding the $250 package. Pick what to emphasize in month one. Everything listed is included — no extra charges for posting, content, or scheduling.",
+        options: [
+          "Posting & scheduling",
+          "Captions & content ideas",
+          "Graphics, carousels & short-form video",
+          "Community management & replies",
+          "Balanced mix of everything above",
+          "Not sure yet",
+        ],
+      },
+      {
         id: "socialLinks",
         label: "Existing social account links (if any)",
         type: "textarea",
@@ -782,33 +802,17 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
       },
       {
         id: "retainerInterest",
-        label: "Interested in the $400/mo retainer?",
+        label: "Interested in the $400/mo retainer? (after month one)",
         type: "select",
         group: "Social accounts & marketing",
         helpText:
-          "Covers ongoing IT, business tools, social management, content, SEO, and marketing admin — like a part-time IT manager ($60k–$100k/yr) for $400/month. The $250 social setup and $50 email setup are separate one-time add-ons on your website project.",
+          "Optional ongoing support after your first month. Covers IT, business tools, social, content, SEO, and marketing admin. The $250 social package and $50 email setup are separate one-time add-ons on your website project.",
         options: [
           "Yes — full retainer (IT + all business tools + social + marketing + admin)",
           "Yes — IT & tech support only (devices, apps, onboarding, website)",
           "Yes — social + marketing only (no IT / tech support)",
           "Maybe — send me the full breakdown",
-          "No — one-time project only",
-        ],
-      },
-      {
-        id: "socialContentNeeds",
-        label: "Social support priorities (if on the retainer)",
-        type: "checkbox-group",
-        group: "Social accounts & marketing",
-        helpText:
-          "Optional — only if you're interested in the retainer. These are included in $400/mo, not extra charges. Skip if you chose one-time project only above.",
-        options: [
-          "Ongoing posting & scheduling",
-          "Captions, content ideas & creative direction",
-          "Graphics, carousels & short-form video",
-          "Community management & replies",
-          "Paid ads management (your ad spend is separate)",
-          "Not sure yet",
+          "No — one-time project only (manage social myself after month 1)",
         ],
       },
       {
@@ -817,7 +821,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         type: "select",
         group: "Social accounts & marketing",
         helpText:
-          "Ad management is included on the retainer — this is what you plan to spend on the platforms (Google, Meta, etc.), not our fee.",
+          "Your spend on Google, Meta, etc. — separate from our $250 add-on and $400/mo retainer fees.",
         options: [
           "Not running ads",
           "Under $500/mo",
@@ -1018,4 +1022,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v14";
+export const STORAGE_KEY = "showme-onboarding-draft-v15";

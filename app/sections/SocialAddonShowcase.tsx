@@ -8,9 +8,10 @@ export const SOCIAL_ADDON_PRICE = 250;
 const includes = [
   "Business account creation on your chosen platforms",
   "Profile setup — bio, links, branding, highlights",
-  "1 full month of social media management",
-  "Posting, scheduling & content for month one",
-  "Handoff notes so you can continue solo or on retainer",
+  "1 full month of posting, scheduling & content management",
+  "Captions, content ideas & creative direction",
+  "Graphics, carousels & short-form video",
+  "Community management & replies",
 ];
 
 export function SocialAddonShowcase() {
@@ -32,10 +33,10 @@ export function SocialAddonShowcase() {
               Social account creation + 1 month management
             </h3>
             <p className="text-primary/70 text-sm sm:text-base leading-relaxed">
-              Add this to any website package. We create your business social profiles, set them up
-              to match your brand, and manage them for your{" "}
-              <strong className="text-[#E1E0CC] font-semibold">first month</strong> — so you launch
-              with a professional social presence, not empty pages.
+              Add this to any website package. We create your profiles, set them up to match your
+              brand, and run them for your{" "}
+              <strong className="text-[#E1E0CC] font-semibold">first full month</strong> — posting,
+              scheduling, content, graphics, and community management included.
             </p>
           </div>
           <div className="shrink-0 text-right">
