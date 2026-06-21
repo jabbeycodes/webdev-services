@@ -10,6 +10,7 @@ export function Footer() {
           ShowMe <span className="text-primary">Web & App</span>
         </Link>
         <div className="flex items-center gap-8 text-sm text-primary/70">
+          <Link href="/onboarding" className="hover:text-[#E1E0CC] transition-colors">Brief</Link>
           <a href="#work" className="hover:text-[#E1E0CC] transition-colors">Work</a>
           <a href="#pricing" className="hover:text-[#E1E0CC] transition-colors">Pricing</a>
           <a href="#about" className="hover:text-[#E1E0CC] transition-colors">About</a>

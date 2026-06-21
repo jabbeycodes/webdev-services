@@ -32,10 +32,10 @@ export function ContactSection() {
 
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="mailto:info@shwme.app"
+                href="/onboarding"
                 className="inline-flex items-center gap-2 bg-primary rounded-full text-black font-bold px-8 py-4 hover:bg-primary/90 transition-colors"
               >
-                <span>Book a free strategy call</span>
+                <span>Start project brief</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
