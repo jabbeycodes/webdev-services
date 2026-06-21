@@ -3,8 +3,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { RetainerShowcase } from "./RetainerShowcase";
 
-const tiers = [
+const projectTiers = [
   {
     name: "Starter",
     forWho: "Founders who need to launch fast",
@@ -81,49 +82,36 @@ const tiers = [
       "App Store + Play Store submission",
       "Unlimited revisions",
     ],
-    notIncluded: ["Ongoing maintenance (see Retainer)", "Hardware / IoT integrations"],
+    notIncluded: ["Ongoing support (see Retainer below)", "Hardware / IoT integrations"],
     cta: "Scope my app",
-    popular: false,
-  },
-  {
-    name: "Retainer",
-    forWho: "Clients who want ongoing support",
-    price: "$400",
-    priceNote: "/month, cancel anytime",
-    timeline: "Ongoing",
-    bestFor: ["Post-launch growth", "Content updates", "Feature additions"],
-    deliverables: [
-      "Unlimited content updates",
-      "Performance monitoring",
-      "Monthly analytics report",
-      "Small features (2–4 hrs/mo)",
-      "Security patches + backups",
-      "Priority support (24h response)",
-      "Quarterly strategy review",
-    ],
-    notIncluded: ["Major redesigns", "New apps"],
-    cta: "Start Retainer",
     popular: false,
   },
 ];
 
 export function PricingSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="pricing" className="py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-3">Pricing</p>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#E1E0CC]">No surprises. No hidden fees.</h2>
-          <p className="text-primary/70 mt-4 max-w-2xl mx-auto">Fixed-price packages. You know exactly what you're paying for before we start.</p>
+          <p className="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-3">
+            Pricing
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#E1E0CC]">
+            No surprises. No hidden fees.
+          </h2>
+          <p className="text-primary/70 mt-4 max-w-2xl mx-auto">
+            Fixed-price builds to launch. Then optional ongoing support — IT, business tools, social,
+            and marketing — for less than a single full-time hire.
+          </p>
         </div>
 
-        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {tiers.map((tier, i) => (
+        <div ref={ref} className="grid md:grid-cols-2 gap-4">
+          {projectTiers.map((tier, i) => (
             <motion.div
-              key={i}
+              key={tier.name}
               className={`bg-[#101010] rounded-2xl p-6 flex flex-col ${
                 tier.popular ? "ring-1 ring-primary/50" : ""
               }`}
@@ -138,7 +126,9 @@ export function PricingSection() {
             >
               {tier.popular && (
                 <div className="mb-3">
-                  <span className="text-[10px] font-semibold bg-primary text-black px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+                  <span className="text-[10px] font-semibold bg-primary text-black px-3 py-1 rounded-full uppercase tracking-wider">
+                    Most Popular
+                  </span>
                 </div>
               )}
 
@@ -157,21 +147,38 @@ export function PricingSection() {
               </div>
 
               <div className="mb-4">
-                <p className="text-[10px] font-semibold text-primary/70 uppercase tracking-wider mb-2">Best for</p>
+                <p className="text-[10px] font-semibold text-primary/70 uppercase tracking-wider mb-2">
+                  Best for
+                </p>
                 <ul className="space-y-1">
-                  {tier.bestFor.map((item, j) => (
-                    <li key={j} className="text-sm text-primary/70">• {item}</li>
+                  {tier.bestFor.map((item) => (
+                    <li key={item} className="text-sm text-primary/70">
+                      • {item}
+                    </li>
                   ))}
                 </ul>
               </div>
 
               <div className="mb-6 flex-1">
-                <p className="text-[10px] font-semibold text-primary/70 uppercase tracking-wider mb-2">What you get</p>
+                <p className="text-[10px] font-semibold text-primary/70 uppercase tracking-wider mb-2">
+                  What you get
+                </p>
                 <ul className="space-y-2">
-                  {tier.deliverables.map((d, j) => (
-                    <li key={j} className="text-sm text-primary/80 flex items-start gap-2">
-                      <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 text-primary shrink-0" fill="none">
-                        <path d="M3 8.5l3 3 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  {tier.deliverables.map((d) => (
+                    <li key={d} className="text-sm text-primary/80 flex items-start gap-2">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        className="mt-0.5 text-primary shrink-0"
+                        fill="none"
+                      >
+                        <path
+                          d="M3 8.5l3 3 7-7"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
                       </svg>
                       {d}
                     </li>
@@ -181,10 +188,14 @@ export function PricingSection() {
 
               {tier.notIncluded.length > 0 && (
                 <div className="mb-6">
-                  <p className="text-[10px] font-semibold text-primary/40 uppercase tracking-wider mb-2">Not included</p>
+                  <p className="text-[10px] font-semibold text-primary/40 uppercase tracking-wider mb-2">
+                    Not included
+                  </p>
                   <ul className="space-y-1">
-                    {tier.notIncluded.map((ni, j) => (
-                      <li key={j} className="text-sm text-primary/40">• {ni}</li>
+                    {tier.notIncluded.map((ni) => (
+                      <li key={ni} className="text-sm text-primary/40">
+                        • {ni}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -203,6 +214,8 @@ export function PricingSection() {
             </motion.div>
           ))}
         </div>
+
+        <RetainerShowcase />
       </div>
     </section>
   );
