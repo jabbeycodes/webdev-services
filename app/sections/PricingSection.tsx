@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import { RetainerShowcase } from "./RetainerShowcase";
+import { SocialAddonShowcase } from "./SocialAddonShowcase";
 
 const projectTiers = [
   {
@@ -214,6 +215,8 @@ export function PricingSection() {
             </motion.div>
           ))}
         </div>
+
+        <SocialAddonShowcase />
 
         <RetainerShowcase />
       </div>

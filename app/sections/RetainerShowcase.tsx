@@ -29,12 +29,12 @@ const pillars = [
   },
   {
     title: "Social & digital marketing",
-    summary: "Your public face — managed and consistent.",
+    summary: "Ongoing management on the retainer — account setup is a separate add-on.",
     items: [
-      "Social page setup & profile optimization",
       "Posting, scheduling & content creation",
       "Captions, graphics & campaign ideas",
       "Digital marketing support & monthly reporting",
+      "Social account setup available as +$250 add-on (includes 1 month management)",
     ],
   },
 ];

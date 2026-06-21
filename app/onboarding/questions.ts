@@ -676,25 +676,24 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
       },
       {
         id: "socialPageSetup",
-        label: "Do you need help creating social media accounts for your business?",
+        label: "Add-on: Social account creation + 1 month management ($250)",
         type: "select",
         group: "Social accounts & marketing",
         helpText:
-          "We can create new accounts from scratch, set up business profiles, and match your branding to your website — or refresh accounts you already have.",
+          "Optional one-time add-on to your website project — not included in build packages or the monthly retainer. We create your business accounts, set up profiles to match your brand, and manage them for your first month.",
         options: [
-          "Yes — create new accounts (I don't have any yet)",
-          "Yes — set up business profiles on platforms I use personally",
-          "Yes — professional setup / refresh of existing business accounts",
-          "No — I already have business accounts set up",
-          "Not sure — tell me what's included",
+          "Yes — add the $250 package (account creation + 1 month management)",
+          "Maybe — send me details on what's included",
+          "No — I'll create and manage social myself",
+          "Not sure yet",
         ],
       },
       {
         id: "socialPlatformsSetup",
-        label: "Which social accounts should we create or manage for you?",
+        label: "Which social accounts should we create? (if adding the $250 package)",
         type: "checkbox-group",
         group: "Social accounts & marketing",
-        helpText: "Select every platform where you want a business account created, set up, or managed.",
+        helpText: "Select platforms for the $250 add-on — account setup plus 1 month of management on each selected platform.",
         options: [
           "Instagram",
           "Facebook",
@@ -721,12 +720,12 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         type: "checkbox-group",
         group: "Social accounts & marketing",
         options: [
-          "Account creation & profile setup",
-          "Posting & scheduling",
+          "Account creation & profile setup ($250 add-on)",
+          "Posting & scheduling (included in $250 add-on month 1, then retainer)",
           "Captions & content ideas",
           "Graphics / carousels / short-form video",
           "Paid ads (Meta / Google)",
-          "Full hands-off social management",
+          "Ongoing management after month 1 ($400/mo retainer)",
           "Nothing — I'll handle social myself",
         ],
       },
@@ -735,13 +734,14 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         label: "Ongoing marketing services interested in",
         type: "checkbox-group",
         group: "Social accounts & marketing",
-        helpText: "Account setup, social management, and content are included on the $400/mo retainer.",
+        helpText:
+          "Social account creation is a $250 one-time add-on (includes 1 month management). Ongoing social, IT, and marketing are on the $400/mo retainer.",
         options: [
-          "Social media account creation & setup",
-          "Social media management (included on $400/mo retainer)",
-          "Social content creation (included on $400/mo retainer)",
-          "IT & business tools support (included on $400/mo retainer)",
-          "Team onboarding & admin setup (included on $400/mo retainer)",
+          "Social account creation + 1 month management — $250 add-on",
+          "Social media management (ongoing — $400/mo retainer)",
+          "Social content creation (ongoing — $400/mo retainer)",
+          "IT & business tools support ($400/mo retainer)",
+          "Team onboarding & admin setup ($400/mo retainer)",
           "Digital marketing strategy",
           "SEO optimization",
           "Paid ads (Google / Meta)",
@@ -771,7 +771,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         type: "select",
         group: "Social accounts & marketing",
         helpText:
-          "Like hiring a full-time IT manager ($60k–$100k/yr) for $400/month. Includes support for all your business tech — email, cloud apps, devices, SaaS tools, websites, team onboarding, social media, content, digital marketing, and priority admin — for $4,800/year total.",
+          "Like hiring a full-time IT manager ($60k–$100k/yr) for $400/month. Ongoing IT, social management, content, and digital marketing — after launch. Social account setup is a separate $250 add-on (includes 1 month management).",
         options: [
           "Yes — full retainer (IT + all business tools + social + marketing + admin)",
           "Yes — IT & tech support only (devices, apps, onboarding, website)",
@@ -909,6 +909,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
           "$1,200–$2,500 (Growth — marketing site)",
           "$3,000–$6,000 (Pro — web app / SaaS)",
           "$2,500–$8,000 (Mobile app)",
+          "$250 add-on (Social accounts + 1 month management)",
           "$400/mo (Retainer — IT, business tools, social, marketing & admin)",
           "Custom scope — need a quote",
           "Not sure — need recommendation",
@@ -970,4 +971,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v9";
+export const STORAGE_KEY = "showme-onboarding-draft-v10";
