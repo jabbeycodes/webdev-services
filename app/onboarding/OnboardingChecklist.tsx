@@ -380,6 +380,28 @@ export function OnboardingChecklist() {
                   {activeSection.sectionNote}
                 </p>
               )}
+              {activeSection.id === "technical" && (
+                <div className="mt-4 grid sm:grid-cols-2 gap-3">
+                  <div className="rounded-xl border border-primary/25 bg-primary/5 px-4 py-3">
+                    <p className="text-[10px] uppercase tracking-widest text-primary/70 mb-1">
+                      Add-on
+                    </p>
+                    <p className="text-sm font-bold text-[#E1E0CC]">
+                      Business email <span className="text-primary">+$50</span>
+                    </p>
+                    <p className="text-xs text-primary/55 mt-1">Custom addresses on your domain</p>
+                  </div>
+                  <div className="rounded-xl border border-primary/25 bg-primary/5 px-4 py-3">
+                    <p className="text-[10px] uppercase tracking-widest text-primary/70 mb-1">
+                      Add-on
+                    </p>
+                    <p className="text-sm font-bold text-[#E1E0CC]">
+                      Social accounts <span className="text-primary">+$250</span>
+                    </p>
+                    <p className="text-xs text-primary/55 mt-1">Creation + 1 month management</p>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="space-y-5 sm:space-y-6">
@@ -391,6 +413,9 @@ export function OnboardingChecklist() {
                   <Fragment key={q.id}>
                     {showGroup && (
                       <>
+                        {q.group === "Domain & hosting" && (
+                          <EmailAddonPricingBox values={values} />
+                        )}
                         {q.group === "Social accounts & marketing" && (
                           <SocialAddonPricingBox values={values} />
                         )}
@@ -398,9 +423,6 @@ export function OnboardingChecklist() {
                           {q.group}
                         </h3>
                       </>
-                    )}
-                    {q.id === "businessEmailAddon" && (
-                      <EmailAddonPricingBox values={values} />
                     )}
                     <Field
                       question={q}

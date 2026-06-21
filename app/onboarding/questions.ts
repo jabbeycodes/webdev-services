@@ -646,7 +646,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
     description:
       "Domain name, social accounts, marketing, infrastructure, and how people will find you after launch.",
     sectionNote:
-      "Domain questions are first, then social accounts, then IT and SEO. Scroll through the full section — each group has its own heading.",
+      "Optional add-ons: +$50 custom business email (Domain group) and +$250 social accounts + 1 month management (Social group). Domain questions come first.",
     questions: [
       {
         id: "domainStatus",
@@ -677,32 +677,6 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         group: "Domain & hosting",
         placeholder: "getyourbrand.com, yourbrand.co, tryyourbrand.com…",
         helpText: "List names you'd like — we'll check availability and suggest alternatives if taken.",
-      },
-      {
-        id: "domainPreferences",
-        label: "Domain name preferences",
-        type: "textarea",
-        group: "Domain & hosting",
-        placeholder:
-          "e.g. must be .com, include city name, short & memorable, match business name exactly, avoid hyphens…",
-        helpText:
-          "Extensions (.com, .co, .app), keywords to include, naming style, backup options, or names to avoid.",
-      },
-      {
-        id: "domainRegistrar",
-        label: "Where is your domain registered? (if you have one)",
-        type: "select",
-        group: "Domain & hosting",
-        options: [
-          "GoDaddy",
-          "Namecheap",
-          "Google Domains / Squarespace",
-          "Cloudflare",
-          "Hostinger",
-          "Other registrar",
-          "Don't have a domain yet",
-          "Not sure",
-        ],
       },
       {
         id: "businessEmailAddon",
@@ -737,6 +711,32 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
           "Zoho Mail",
           "Email through my web host",
           "No preference — recommend the best option",
+          "Not sure",
+        ],
+      },
+      {
+        id: "domainPreferences",
+        label: "Domain name preferences",
+        type: "textarea",
+        group: "Domain & hosting",
+        placeholder:
+          "e.g. must be .com, include city name, short & memorable, match business name exactly, avoid hyphens…",
+        helpText:
+          "Extensions (.com, .co, .app), keywords to include, naming style, backup options, or names to avoid.",
+      },
+      {
+        id: "domainRegistrar",
+        label: "Where is your domain registered? (if you have one)",
+        type: "select",
+        group: "Domain & hosting",
+        options: [
+          "GoDaddy",
+          "Namecheap",
+          "Google Domains / Squarespace",
+          "Cloudflare",
+          "Hostinger",
+          "Other registrar",
+          "Don't have a domain yet",
           "Not sure",
         ],
       },
@@ -781,41 +781,33 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         placeholder: "Paste links to accounts you already have — or leave blank if you need us to create them.",
       },
       {
-        id: "socialContentNeeds",
-        label: "What do you need help with on social?",
-        type: "checkbox-group",
+        id: "retainerInterest",
+        label: "Interested in the $400/mo retainer?",
+        type: "select",
         group: "Social accounts & marketing",
+        helpText:
+          "Covers ongoing IT, business tools, social management, content, SEO, and marketing admin — like a part-time IT manager ($60k–$100k/yr) for $400/month. The $250 social setup and $50 email setup are separate one-time add-ons on your website project.",
         options: [
-          "Account creation & profile setup ($250 add-on)",
-          "Posting & scheduling (included in $250 add-on month 1, then retainer)",
-          "Captions & content ideas",
-          "Graphics / carousels / short-form video",
-          "Paid ads (Meta / Google)",
-          "Ongoing management after month 1 ($400/mo retainer)",
-          "Nothing — I'll handle social myself",
+          "Yes — full retainer (IT + all business tools + social + marketing + admin)",
+          "Yes — IT & tech support only (devices, apps, onboarding, website)",
+          "Yes — social + marketing only (no IT / tech support)",
+          "Maybe — send me the full breakdown",
+          "No — one-time project only",
         ],
       },
       {
-        id: "marketingServices",
-        label: "Ongoing marketing services interested in",
+        id: "socialContentNeeds",
+        label: "Social support priorities (if on the retainer)",
         type: "checkbox-group",
         group: "Social accounts & marketing",
         helpText:
-          "Social account creation is a $250 one-time add-on (includes 1 month management). Ongoing social, IT, and marketing are on the $400/mo retainer.",
+          "Optional — only if you're interested in the retainer. These are included in $400/mo, not extra charges. Skip if you chose one-time project only above.",
         options: [
-          "Social account creation + 1 month management — $250 add-on",
-          "Custom business email setup — $50 add-on",
-          "Social media management (ongoing — $400/mo retainer)",
-          "Social content creation (ongoing — $400/mo retainer)",
-          "IT & business tools support ($400/mo retainer)",
-          "Team onboarding & admin setup ($400/mo retainer)",
-          "Digital marketing strategy",
-          "SEO optimization",
-          "Paid ads (Google / Meta)",
-          "Content / blog writing",
-          "Email marketing",
-          "Analytics & reporting",
-          "None — website only",
+          "Ongoing posting & scheduling",
+          "Captions, content ideas & creative direction",
+          "Graphics, carousels & short-form video",
+          "Community management & replies",
+          "Paid ads management (your ad spend is separate)",
           "Not sure yet",
         ],
       },
@@ -824,27 +816,14 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         label: "Monthly ad budget (if running paid ads)",
         type: "select",
         group: "Social accounts & marketing",
+        helpText:
+          "Ad management is included on the retainer — this is what you plan to spend on the platforms (Google, Meta, etc.), not our fee.",
         options: [
           "Not running ads",
           "Under $500/mo",
           "$500–$2,000/mo",
           "$2,000+/mo",
           "Not sure",
-        ],
-      },
-      {
-        id: "retainerInterest",
-        label: "Interested in the $400/mo retainer?",
-        type: "select",
-        group: "Social accounts & marketing",
-        helpText:
-          "Like hiring a full-time IT manager ($60k–$100k/yr) for $400/month. Ongoing IT, social management, content, and digital marketing — after launch. Social account setup is a separate $250 add-on (includes 1 month management).",
-        options: [
-          "Yes — full retainer (IT + all business tools + social + marketing + admin)",
-          "Yes — IT & tech support only (devices, apps, onboarding, website)",
-          "Yes — social + marketing only (no IT / tech support)",
-          "Maybe — send me the full breakdown",
-          "No — one-time project only",
         ],
       },
       {
@@ -1039,4 +1018,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v12";
+export const STORAGE_KEY = "showme-onboarding-draft-v14";
