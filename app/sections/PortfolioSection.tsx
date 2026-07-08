@@ -43,10 +43,10 @@ const projects = [
     img: "/images/pulsepoint-clinic.jpg",
   },
   {
-    title: "LifePath of Mid-Missouri",
-    tag: "Healthcare Agency",
-    desc: "Compassionate care website for a disability services provider in Columbia, MO. Person-centered design with service showcase, career portal, and family resources. \"Compassionate Care. Meaningful Lives.\"",
-    img: "/images/lifepath-healthcare.jpg",
+    title: "A&M Royal Healthcare",
+    tag: "Home Healthcare",
+    desc: "Compassionate home healthcare website for families across Nebraska — personal care, companion care, respite support, and caregiver staffing. Built for trust, conversions, and mobile-first family decision-makers.",
+    img: "/images/amroyal-healthcare.jpg",
   },
   {
     title: "NovaLaunch",
