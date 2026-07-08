@@ -19,10 +19,51 @@ export interface Question {
   group?: string;
 }
 
+/** Monthly IT + marketing retainer — keep in sync with RetainerShowcase on pricing page */
+export const RETAINER = {
+  price: 1399,
+  title: "IT management, tech support & marketing retainer",
+  badge: "Monthly retainer",
+  priceNote:
+    "One flat monthly fee — replaces an in-house IT manager, break-fix consultants, and a social/marketing agency. Cancel anytime.",
+  valueHeadline:
+    "What most businesses spend $90,000–$140,000/year hiring separately — for $16,788/year.",
+  savingsNote:
+    "A single IT manager runs $60k–$100k plus benefits. Add a social agency at $1.5k–$3k/mo and you're past six figures before marketing admin. The retainer bundles all three roles.",
+  roiNote:
+    "One security incident, ransomware event, or full day of downtime often costs more than a year on this plan. Proactive support pays for itself.",
+  perDayNote: "Less than $47/day for a full ops team on call.",
+  includes: [
+    "Dedicated IT & tech support (email, cloud, devices, SaaS, security)",
+    "Team onboarding & admin setup for new hires",
+    "Ongoing social media management & content",
+    "Digital marketing, SEO support & monthly reporting",
+    "Website, hosting & domain management",
+    "24-hour priority response — no PTO, no recruiting, no benefits overhead",
+  ],
+  comparisons: [
+    { label: "In-house IT manager (with benefits)", value: "$75k–$130k/yr" },
+    { label: "Social media agency", value: "$18k–$36k/yr" },
+    { label: "MSP + marketing contractor", value: "$24k–$60k/yr" },
+    { label: "Hiring all three separately", value: "$90k–$140k+/yr" },
+  ],
+} as const;
+
+export function formatRetainerPrice(): string {
+  return `$${RETAINER.price.toLocaleString("en-US")}`;
+}
+
+export function isRetainerInterested(
+  values: Record<string, string | string[] | undefined>
+): boolean {
+  const answer = values.retainerInterest?.toString() ?? "";
+  return answer.startsWith("Yes —") || answer.startsWith("Maybe");
+}
+
 /** Social media account creation add-on — keep in sync with SocialAddonShowcase on pricing page */
 export const SOCIAL_ADDON = {
   price: 250,
-  retainerPrice: 400,
+  retainerPrice: RETAINER.price,
   title: "Social account creation + 1 month management",
   badge: "Optional add-on",
   priceNote:
@@ -35,8 +76,7 @@ export const SOCIAL_ADDON = {
     "Graphics, carousels & short-form video",
     "Community management & replies",
   ],
-  afterMonthNote:
-    "After month 1, continue with the $400/mo retainer for ongoing social & marketing — or manage accounts yourself.",
+  afterMonthNote: `After month 1, continue with the ${formatRetainerPrice()}/mo retainer for ongoing social & marketing — or manage accounts yourself.`,
 } as const;
 
 export function isSocialAddonSelected(values: Record<string, string | string[] | undefined>): boolean {
@@ -649,7 +689,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
     description:
       "Domain name, social accounts, marketing, infrastructure, and how people will find you after launch.",
     sectionNote:
-      "Optional add-ons: +$50 custom business email (Domain group) and +$250 social accounts + 1 month management (Social group). Domain questions come first.",
+      "Optional add-ons: +$50 custom business email, +$250 social (1 month management), or ongoing IT & marketing retainer at $1,399/mo after launch.",
     questions: [
       {
         id: "domainStatus",
@@ -802,11 +842,10 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
       },
       {
         id: "retainerInterest",
-        label: "Interested in the $400/mo retainer? (after month one)",
+        label: `Interested in the ${formatRetainerPrice()}/mo retainer? (after month one)`,
         type: "select",
         group: "Social accounts & marketing",
-        helpText:
-          "Optional ongoing support after your first month. Covers IT, business tools, social, content, SEO, and marketing admin. The $250 social package and $50 email setup are separate one-time add-ons on your website project.",
+        helpText: `${RETAINER.savingsNote} ${RETAINER.roiNote}`,
         options: [
           "Yes — full retainer (IT + all business tools + social + marketing + admin)",
           "Yes — IT & tech support only (devices, apps, onboarding, website)",
@@ -820,8 +859,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         label: "Monthly ad budget (if running paid ads)",
         type: "select",
         group: "Social accounts & marketing",
-        helpText:
-          "Your spend on Google, Meta, etc. — separate from our $250 add-on and $400/mo retainer fees.",
+        helpText: `Your spend on Google, Meta, etc. — separate from our $250 add-on and ${formatRetainerPrice()}/mo retainer fees.`,
         options: [
           "Not running ads",
           "Under $500/mo",
@@ -835,7 +873,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
         label: "What IT & tech support do you need?",
         type: "checkbox-group",
         group: "IT & tech support (Retainer)",
-        helpText: "Included on the $400/mo retainer — select all that apply.",
+        helpText: `Included on the ${formatRetainerPrice()}/mo retainer — select all that apply.`,
         options: [
           "Email & cloud productivity (Microsoft 365, Google Workspace, etc.)",
           "Collaboration tools (Slack, Teams, Zoom, Notion, etc.)",
@@ -961,7 +999,7 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
           "$2,500–$8,000 (Mobile app)",
           "$250 add-on (Social accounts + 1 month management)",
           "$50 add-on (Custom business email setup)",
-          "$400/mo (Retainer — IT, business tools, social, marketing & admin)",
+          `${formatRetainerPrice()}/mo (Retainer — IT, business tools, social, marketing & admin)`,
           "Custom scope — need a quote",
           "Not sure — need recommendation",
         ],
@@ -1022,4 +1060,4 @@ export const ONBOARDING_SECTIONS: OnboardingSection[] = [
   },
 ];
 
-export const STORAGE_KEY = "showme-onboarding-draft-v15";
+export const STORAGE_KEY = "showme-onboarding-draft-v16";

@@ -6,9 +6,12 @@ import { ArrowLeft, Check, Copy, Download, Mail, RotateCcw } from "lucide-react"
 import {
   EMAIL_ADDON,
   ONBOARDING_SECTIONS,
+  RETAINER,
   SOCIAL_ADDON,
   STORAGE_KEY,
+  formatRetainerPrice,
   isEmailAddonSelected,
+  isRetainerInterested,
   isSocialAddonSelected,
   type OnboardingSection,
   type Question,
@@ -381,7 +384,7 @@ export function OnboardingChecklist() {
                 </p>
               )}
               {activeSection.id === "technical" && (
-                <div className="mt-4 grid sm:grid-cols-2 gap-3">
+                <div className="mt-4 grid sm:grid-cols-3 gap-3">
                   <div className="rounded-xl border border-primary/25 bg-primary/5 px-4 py-3">
                     <p className="text-[10px] uppercase tracking-widest text-primary/70 mb-1">
                       Add-on
@@ -399,6 +402,15 @@ export function OnboardingChecklist() {
                       Social accounts <span className="text-primary">+$250</span>
                     </p>
                     <p className="text-xs text-primary/55 mt-1">Creation + 1 month management</p>
+                  </div>
+                  <div className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3">
+                    <p className="text-[10px] uppercase tracking-widest text-primary/70 mb-1">
+                      Monthly
+                    </p>
+                    <p className="text-sm font-bold text-[#E1E0CC]">
+                      IT & marketing <span className="text-primary">{formatRetainerPrice()}/mo</span>
+                    </p>
+                    <p className="text-xs text-primary/55 mt-1">vs $90k–$140k/yr hiring separately</p>
                   </div>
                 </div>
               )}
@@ -423,6 +435,9 @@ export function OnboardingChecklist() {
                           {q.group}
                         </h3>
                       </>
+                    )}
+                    {q.id === "retainerInterest" && (
+                      <RetainerPricingBox values={values} />
                     )}
                     <Field
                       question={q}
@@ -588,6 +603,59 @@ function EmailAddonPricingBox({ values }: { values: FormValues }) {
           {addresses
             ? " · addresses listed below"
             : " · list your addresses in the next question"}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function RetainerPricingBox({ values }: { values: FormValues }) {
+  const interested = isRetainerInterested(values);
+  const annualTotal = (RETAINER.price * 12).toLocaleString("en-US");
+
+  return (
+    <div
+      className={`rounded-2xl border p-4 sm:p-5 mb-2 ${
+        interested ? "border-primary/40 bg-primary/10" : "border-white/[0.1] bg-black/30"
+      }`}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+        <div>
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-primary/80">
+            {RETAINER.badge}
+          </span>
+          <p className="text-base sm:text-lg font-bold text-[#E1E0CC] mt-1">{RETAINER.title}</p>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="text-2xl sm:text-3xl font-bold text-primary">{formatRetainerPrice()}</p>
+          <p className="text-[11px] text-primary/55">/month · ${annualTotal}/year</p>
+        </div>
+      </div>
+
+      <p className="text-xs sm:text-sm text-primary/70 mb-2">{RETAINER.valueHeadline}</p>
+      <p className="text-xs text-primary/55 mb-3">{RETAINER.savingsNote}</p>
+
+      <div className="grid grid-cols-2 gap-2 mb-3">
+        {RETAINER.comparisons.map((row) => (
+          <div
+            key={row.label}
+            className="rounded-lg border border-white/[0.06] bg-black/20 px-2.5 py-2"
+          >
+            <p className="text-[9px] uppercase tracking-wider text-primary/45">{row.label}</p>
+            <p className="text-[11px] font-medium text-[#E1E0CC]/70 line-through decoration-primary/25">
+              {row.value}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <p className="text-[11px] text-primary/50 border-t border-white/[0.06] pt-3">
+        {RETAINER.roiNote} {RETAINER.perDayNote}
+      </p>
+
+      {interested && (
+        <p className="mt-3 text-sm font-medium text-primary bg-black/30 rounded-xl px-3 py-2.5 border border-primary/20">
+          ✓ Added to your brief — {formatRetainerPrice()}/mo retainer
         </p>
       )}
     </div>

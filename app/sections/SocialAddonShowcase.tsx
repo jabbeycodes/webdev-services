@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { formatRetainerPrice } from "../onboarding/questions";
 
 export const SOCIAL_ADDON_PRICE = 250;
 
@@ -71,8 +72,8 @@ export function SocialAddonShowcase() {
         </ul>
 
         <p className="text-xs text-primary/50 mb-6 border-t border-white/[0.06] pt-4">
-          After month one, continue with the ${400}/mo retainer for ongoing social, IT, and
-          marketing support — or manage accounts yourself.
+          After month one, continue with the {formatRetainerPrice()}/mo retainer for ongoing social,
+          IT, and marketing support — or manage accounts yourself.
         </p>
 
         <Link
